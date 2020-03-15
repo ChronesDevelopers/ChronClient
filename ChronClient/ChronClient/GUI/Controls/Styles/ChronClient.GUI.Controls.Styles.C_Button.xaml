@@ -1,0 +1,39 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ChronClient.GUI.Controls.Styles">
+    <Style x:Key="C_Button" TargetType="Button">
+        <Setter Property="Background" Value="#FF3C3C3C"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="Consolas"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="MinHeight" Value="30"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="15" Background="{TemplateBinding Background}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="White" Duration="0:0:0.5" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                                    <ColorAnimation To="Black" Duration="0:0:0.5" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="#FF3C3C3C" Duration="0:0:0.5" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                                    <ColorAnimation To="White" Duration="0:0:0.5" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

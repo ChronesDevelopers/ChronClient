@@ -1,0 +1,15 @@
+C:\Users\lukax\source\repos\ChronClient\bin\x64\Debug\ChronClient.exe.config
+C:\Users\lukax\source\repos\ChronClient\bin\x64\Debug\ChronClient.exe
+C:\Users\lukax\source\repos\ChronClient\bin\x64\Debug\ChronClient.pdb
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\App.g.cs
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\ChronClient_MarkupCompile.cache
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\ChronClient_MarkupCompile.lref
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\ChronClient.g.resources
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\ChronClient.Properties.Resources.resources
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\ChronClient.csproj.GenerateResource.cache
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\ChronClient.exe
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\ChronClient.pdb
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\ChronClient\GUI\ChronClient.GUI.MainWindow.g.cs
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\ChronClient\GUI\ChronClient.GUI.MainWindow.baml
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\App.baml
+C:\Users\lukax\source\repos\ChronClient\obj\x64\Debug\ChronClient\GUI\Controls\Styles\ChronClient.GUI.Controls.Styles.C_Button.baml
