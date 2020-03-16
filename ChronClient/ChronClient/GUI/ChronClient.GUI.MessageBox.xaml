@@ -1,11 +1,11 @@
-﻿<Window x:Class="ChronClient.GUI.MainWindow"
+﻿<Window x:Class="ChronClient.GUI.C_MessageBox"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ChronClient.GUI"
         mc:Ignorable="d"
-        Title="ChronClient" Height="700" Width="1000" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Icon="/ChronClient;component/ChronClient/res/logo/png/ChronClient_Logo_WhiteBlack_Original.png" MinHeight="600" MinWidth="800">
+        Title="ChronClient" Height="300" Width="300" AllowsTransparency="True" WindowStyle="None" WindowStartupLocation="CenterScreen" Icon="/ChronClient;component/ChronClient/res/logo/png/ChronClient_Logo_WhiteBlack_Original.png" MinHeight="300" MinWidth="300" ResizeMode="NoResize">
     <WindowChrome.WindowChrome>
         <WindowChrome CaptionHeight="32" GlassFrameThickness="8" TextBlock.FontFamily="Consolas" TextBlock.FontSize="18" TextBlock.Foreground="White"/>
     </WindowChrome.WindowChrome>
@@ -17,12 +17,23 @@
             </StackPanel>
             <StackPanel x:Name="Controls" HorizontalAlignment="Right" Orientation="Horizontal" Margin="10,0,5,0">
                 <Ellipse WindowChrome.IsHitTestVisibleInChrome="True" x:Name="Control_Minimize" Fill="#FFF4F4F5" Width="20" Height="20" Margin="5,0" MouseUp="Control_Minimize_MouseUp"/>
-                <Ellipse WindowChrome.IsHitTestVisibleInChrome="True" x:Name="Control_Maximize" Fill="#FFF4F4F5" Width="20" Height="20" Margin="5,6" MouseUp="Control_Maximize_MouseUp"/>
                 <Ellipse WindowChrome.IsHitTestVisibleInChrome="True" x:Name="Control_Close" Width="20" Height="20" Margin="5,6" Fill="#FFF4F4F5" MouseUp="Control_Close_MouseUp"/>
             </StackPanel>
         </Grid>
-        <Grid x:Name="Content" Margin="0,32,0,0" Opacity="0">
-            <Frame Name="NavigationFrame" NavigationUIVisibility="Hidden" Navigating="NavigationFrame_Navigated"  Content="Frame" Source="/ChronClient;component/ChronClient/GUI/ChronClient.GUI.MainWindow.WelcomePage.xaml"/>
+        <Grid x:Name="Content" Margin="0,32,0,0">
+            <DockPanel LastChildFill="True">
+                <Grid x:Name="BottomGrid" Height="60" DockPanel.Dock="Bottom">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="Option1" Grid.Column="0" Style="{StaticResource C_Button}" Content="Ok" VerticalAlignment="Center" Height="40" Margin="10,0,5,0"/>
+                    <Button x:Name="Option2" Grid.Column="1" Style="{StaticResource C_Button}" Content="Cancel" VerticalAlignment="Center" Height="40" Margin="5,0,10,0"/>
+                </Grid>
+                <Grid x:Name="MiddleGrid">
+                    <TextBlock x:Name="TEXT" HorizontalAlignment="Center" TextWrapping="Wrap" Text="TEXT" VerticalAlignment="Center" FontFamily="Consolas" FontSize="20" FontWeight="Bold" Foreground="White"/>
+                </Grid>
+            </DockPanel>
         </Grid>
         <Border BorderBrush="#FF1E1E1E" BorderThickness="5"/>
     </Grid>

@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Chrones.Cmr;
 using Chrones.Cmr.Font;
+using ChronClient.Data;
 
 namespace ChronClient
 {
@@ -19,6 +20,7 @@ namespace ChronClient
             StartScreen();
             Console.WriteLine($@"{cmr.cf(255, 255, 255)}Thanks for using ChronClient :D");
             cmr.clogl(ConsoleData.ChronClientLogName, "Loading Application");
+            StroringInformationSetup.FileSetup();
             Thread.Sleep(500);
             cmr.clogl(ConsoleData.ChronClientLogName, "Loading Cmr");
             Thread.Sleep(300);
@@ -42,12 +44,7 @@ namespace ChronClient
             cmr.clogl(ConsoleData.ChronClientLogName, "//Loading Module_NoFallDamage");
             Thread.Sleep(50);
             cmr.clogl(ConsoleData.ChronClientLogName, "Finished!");
-            Thread.Sleep(500);
-            cmr.clogl(ConsoleData.ChronClientLogName, "Lol");
-            cmr.clogl(ConsoleData.ChronClientLogName, "1+1=2");
-            cmr.EnableQuickEdit();
-            cmr.ExitApplicationPrint();
-            cmr.DisableQuickEdit();
+            CommunicationData.MainWindow.WelcomeScreenAllowed = true;
         }
 
         public static void StartScreen()
@@ -55,7 +52,7 @@ namespace ChronClient
             cmr_font.SetConsoleFont("Consolas", 13, 27);
             cmr.CenterConsole();
             cmr.MaximizeConsole();
-            Thread.Sleep(100);
+            Thread.Sleep(10);
             Console.Write(cmr.cb(71, 255, 123) + cmr.cf(71, 255, 123));
             Console.Write("######################################################################################\n"); Console.Write(cmr.cf(0,0,0));
             Console.Write(" Welcome to the                                                                       \n"); Console.Write(cmr.cf(71, 255, 123));

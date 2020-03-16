@@ -60,6 +60,12 @@
   <PropertyGroup>
     <StartupObject>ChronClient.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ChronClient\res\logo\ico\ChronClient_Logo_WhiteBlack_Original.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -83,6 +89,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ChronClient\GUI\ChronClient.GUI.MainWindow.DashboardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\GUI\ChronClient.GUI.MainWindow.WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChronClient\GUI\ChronClient.GUI.MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -91,9 +105,23 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ChronClient\Console\ChronClient.Console.Data.cs" />
+    <Compile Include="ChronClient\Data\ChronClient.Data.CommunicationData.cs" />
+    <Compile Include="ChronClient\Data\ChronClient.Data.Console.cs" />
     <Compile Include="ChronClient\Console\ChronClient.Main.cs" />
+    <Compile Include="ChronClient\Data\ChronClient.Data.StringInformationSetup.cs" />
+    <Compile Include="ChronClient\GUI\ChronClient.GUI.MainWindow.DashboardPage.xaml.cs">
+      <DependentUpon>ChronClient.GUI.MainWindow.DashboardPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\ChronClient.GUI.MainWindow.WelcomePage.xaml.cs">
+      <DependentUpon>ChronClient.GUI.MainWindow.WelcomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\ChronClient.GUI.MessageBox.xaml.cs">
+      <DependentUpon>ChronClient.GUI.MessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChronClient\Memory.cs\ChronClient.MemoryManagement.cs" />
+    <Compile Include="ChronClient\temp\template\ChronClient\GUI\Temp.Template.ChronClient.GUI.WINDOW.xaml.cs">
+      <DependentUpon>Temp.Template.ChronClient.GUI.WINDOW.xaml</DependentUpon>
+    </Compile>
     <Compile Include="lib\cmr\Cmr.cs" />
     <Compile Include="lib\cmr\Cmr.Font.cs" />
     <Compile Include="lib\cmr\Cmr.Imports.cs" />
@@ -105,6 +133,14 @@
     <Page Include="ChronClient\GUI\Controls\Styles\ChronClient.GUI.Controls.Styles.C_Button.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\GUI\ChronClient.GUI.MessageBox.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChronClient\temp\template\ChronClient\GUI\Temp.Template.ChronClient.GUI.WINDOW.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -126,7 +162,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="app.manifest" />
     <None Include="ChronClient\App.config" />
+    <Compile Include="ChronClient\Data\ChronClient.Data.StoringInformation.cs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -137,6 +175,22 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ChronClient\Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ChronClient\res\logo\png\ChronClient_Logo_Black-White_BIG.png" />
+    <Resource Include="ChronClient\res\logo\png\ChronClient_Logo_Black-White_Original.png" />
+    <Resource Include="ChronClient\res\logo\png\ChronClient_Logo_Transparent_BIG.png" />
+    <Resource Include="ChronClient\res\logo\png\ChronClient_Logo_Transparent_Original.png" />
+    <Resource Include="ChronClient\res\logo\png\ChronClient_Logo_WhiteBlack_BIG.png" />
+    <Resource Include="ChronClient\res\logo\png\ChronClient_Logo_WhiteBlack_Original.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ChronClient\res\logo\ico\ChronClient_Logo_Black-White_Original.ico" />
+    <Resource Include="ChronClient\res\logo\ico\ChronClient_Logo_Transparent_Original.ico" />
+    <Resource Include="ChronClient\res\logo\ico\ChronClient_Logo_WhiteBlack_Original.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ChronClient\res\logo\png\ChronClient_Logo_Gray_BIG.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

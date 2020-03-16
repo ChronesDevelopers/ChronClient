@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\lukax\source\repos\ChronClient\App.xaml
-21938297761
+62141268363
 
-13512983775
+20-1247148425
 15-1387704499
-ChronClient\GUI\ChronClient.GUI.MainWindow.xaml;ChronClient\GUI\Controls\Styles\ChronClient.GUI.Controls.Styles.C_Button.xaml;
+ChronClient\GUI\ChronClient.GUI.MainWindow.DashboardPage.xaml;ChronClient\GUI\ChronClient.GUI.MainWindow.WelcomePage.xaml;ChronClient\GUI\ChronClient.GUI.MainWindow.xaml;ChronClient\GUI\Controls\Styles\ChronClient.GUI.Controls.Styles.C_Button.xaml;ChronClient\GUI\ChronClient.GUI.MessageBox.xaml;ChronClient\temp\template\ChronClient\GUI\Temp.Template.ChronClient.GUI.WINDOW.xaml;
 
 False
 
