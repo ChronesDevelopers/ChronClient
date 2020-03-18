@@ -22,7 +22,7 @@
             </StackPanel>
         </Grid>
         <Grid x:Name="Content" Margin="0,32,0,0" Opacity="0">
-            <Frame Name="NavigationFrame" NavigationUIVisibility="Hidden" Navigating="NavigationFrame_Navigated"  Content="Frame" Source="/ChronClient;component/ChronClient/GUI/ChronClient.GUI.MainWindow.WelcomePage.xaml"/>
+            <Frame Name="NavigationFrame" NavigationUIVisibility="Hidden" Navigating="NavigationFrame_Navigated"  Content="Frame" Source="/ChronClient;component/ChronClient/GUI/Page/ChronClient.GUI.MainWindow.WelcomePage.xaml"/>
         </Grid>
         <Border BorderBrush="#FF1E1E1E" BorderThickness="5"/>
     </Grid>

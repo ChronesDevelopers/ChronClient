@@ -13,5 +13,11 @@ namespace ChronClient.Data
         {
             public static bool WelcomeScreenAllowed = false;
         }
+
+        public static class Overlay
+        {
+            public static ChronClient.GUI.Forms.Overlay overlay;
+            public static IntPtr TargetWindowHandle;
+        }
     }
 }

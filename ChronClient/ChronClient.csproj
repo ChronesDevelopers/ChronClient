@@ -71,6 +71,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -83,17 +84,22 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="ChronClient\GUI\ChronClient.GUI.MainWindow.DashboardPage.xaml">
+    <Page Include="ChronClient\GUI\Controls\Styles\ChronClient.GUI.Controls.Styles.C_ScrollViewer.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ChronClient\GUI\ChronClient.GUI.MainWindow.WelcomePage.xaml">
+    <Page Include="ChronClient\GUI\Page\ChronClient.GUI.MainWindow.DashboardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\GUI\Page\ChronClient.GUI.MainWindow.WelcomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,15 +114,28 @@
     <Compile Include="ChronClient\Data\ChronClient.Data.CommunicationData.cs" />
     <Compile Include="ChronClient\Data\ChronClient.Data.Console.cs" />
     <Compile Include="ChronClient\Console\ChronClient.Main.cs" />
+    <Compile Include="ChronClient\Data\ChronClient.Data.cs" />
     <Compile Include="ChronClient\Data\ChronClient.Data.StringInformationSetup.cs" />
-    <Compile Include="ChronClient\GUI\ChronClient.GUI.MainWindow.DashboardPage.xaml.cs">
+    <Compile Include="ChronClient\GUI\Forms\ChronClient.GUI.Forms.Overlay.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChronClient\GUI\Forms\ChronClient.GUI.Forms.Overlay.Designer.cs">
+      <DependentUpon>ChronClient.GUI.Forms.Overlay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\Page\ChronClient.GUI.MainWindow.DashboardPage.xaml.cs">
       <DependentUpon>ChronClient.GUI.MainWindow.DashboardPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChronClient\GUI\ChronClient.GUI.MainWindow.WelcomePage.xaml.cs">
+    <Compile Include="ChronClient\GUI\Page\ChronClient.GUI.MainWindow.WelcomePage.xaml.cs">
       <DependentUpon>ChronClient.GUI.MainWindow.WelcomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChronClient\GUI\ChronClient.GUI.MessageBox.xaml.cs">
       <DependentUpon>ChronClient.GUI.MessageBox.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\Page\Page\ChronClient.GUI.MainWindow.DashboardPage.SettingsPage.xaml.cs">
+      <DependentUpon>ChronClient.GUI.MainWindow.DashboardPage.SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\Page\Page\ChronClient.GUI.MainWindow.DashboardPage.WelcomePage.xaml.cs">
+      <DependentUpon>ChronClient.GUI.MainWindow.DashboardPage.WelcomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChronClient\Memory.cs\ChronClient.MemoryManagement.cs" />
     <Compile Include="ChronClient\temp\template\ChronClient\GUI\Temp.Template.ChronClient.GUI.WINDOW.xaml.cs">
@@ -138,6 +157,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ChronClient\GUI\Page\Page\ChronClient.GUI.MainWindow.DashboardPage.SettingsPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChronClient\GUI\Page\Page\ChronClient.GUI.MainWindow.DashboardPage.WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChronClient\temp\template\ChronClient\GUI\Temp.Template.ChronClient.GUI.WINDOW.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -158,6 +185,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <EmbeddedResource Include="ChronClient\GUI\Forms\ChronClient.GUI.Forms.Overlay.resx">
+      <DependentUpon>ChronClient.GUI.Forms.Overlay.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

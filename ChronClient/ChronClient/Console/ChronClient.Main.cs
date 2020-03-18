@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 using Chrones.Cmr;
 using Chrones.Cmr.Font;
 using ChronClient.Data;
+using ChronClient.GUI.Forms;
+using ChronClient.Data;
 
 namespace ChronClient
 {
@@ -28,6 +30,7 @@ namespace ChronClient
             Thread.Sleep(500);
             cmr.clogl(ConsoleData.ChronClientLogName, "Loading GUI");
             Thread.Sleep(800);
+            OverlayManagment.StartOverlay();
             Thread.Sleep(200);
             cmr.clogl(ConsoleData.ChronClientLogName, "//Loading Modules");
             Thread.Sleep(200);
@@ -91,6 +94,24 @@ namespace ChronClient
             public static void ConsoleMain()
             {
                 Start(args);
+            }
+        }
+
+        public static class OverlayManagment
+        {
+            public static Thread OverlayThread;
+            public static void StartOverlay()
+            {
+                OverlayThread = new Thread(OverlayLoop);
+                OverlayThread.Start();
+            }
+
+            private static void OverlayLoop()
+            {
+                System.Windows.Forms.Application.EnableVisualStyles();
+                CommunicationData.Overlay.overlay = new ChronClient.GUI.Forms.Overlay();
+                System.Windows.Forms.Application.Run(CommunicationData.Overlay.overlay);
+                CommunicationData.Overlay.overlay.Show();
             }
         }
     }

@@ -7,6 +7,10 @@ using System.Windows.Media.Animation;
 using System.Windows.Navigation;
 using System.Threading;
 using System.Windows.Controls;
+using System.Windows.Media;
+using Chrones.Cmr.Imports;
+using System.Runtime.InteropServices;
+using System.Windows.Interop;
 
 namespace ChronClient.GUI
 {
@@ -16,6 +20,47 @@ namespace ChronClient.GUI
     public partial class MainWindow : Window
     {
         DispatcherTimer SlowUpdateGUI;
+
+        #region MaximizingFix
+        CompositionTarget WindowCompositionTarget { get; set; }
+
+        double CachedMinWidth { get; set; }
+
+        double CachedMinHeight { get; set; }
+
+        Import.POINT CachedMinTrackSize { get; set; }
+
+        IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
+        {
+            switch (msg)
+            {
+                case 0x0024:
+                    Import.MINMAXINFO mmi = (Import.MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(Import.MINMAXINFO));
+                    IntPtr monitor = Import.MonitorFromWindow(hwnd, 0x00000002 /*MONITOR_DEFAULTTONEAREST*/);
+                    if (monitor != IntPtr.Zero)
+                    {
+                        Import.MONITORINFO monitorInfo = new Import.MONITORINFO { };
+                        Import.GetMonitorInfo(monitor, monitorInfo);
+                        Import.RECT rcWorkArea = monitorInfo.rcWork;
+                        Import.RECT rcMonitorArea = monitorInfo.rcMonitor;
+                        mmi.ptMaxPosition.x = Math.Abs(rcWorkArea.left - rcMonitorArea.left);
+                        mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
+                        mmi.ptMaxSize.x = Math.Abs(rcWorkArea.right - rcWorkArea.left);
+                        mmi.ptMaxSize.y = Math.Abs(rcWorkArea.bottom - rcWorkArea.top);
+                        if (!CachedMinTrackSize.Equals(mmi.ptMinTrackSize) || CachedMinHeight != MinHeight && CachedMinWidth != MinWidth)
+                        {
+                            mmi.ptMinTrackSize.x = (int)((CachedMinWidth = MinWidth) * WindowCompositionTarget.TransformToDevice.M11);
+                            mmi.ptMinTrackSize.y = (int)((CachedMinHeight = MinHeight) * WindowCompositionTarget.TransformToDevice.M22);
+                            CachedMinTrackSize = mmi.ptMinTrackSize;
+                        }
+                    }
+                    Marshal.StructureToPtr(mmi, lParam, true);
+                    handled = true;
+                    break;
+            }
+            return IntPtr.Zero;
+        }
+        #endregion
 
 
         public MainWindow()
@@ -27,6 +72,14 @@ namespace ChronClient.GUI
             SlowUpdateGUI.Interval = new TimeSpan(100);
             SlowUpdateGUI.Tick += SlowUpdateGUI_Tick;
             SlowUpdateGUI.Start();
+            #endregion
+
+            #region MaximizingFix
+            SourceInitialized += (s, e) =>
+            {
+                WindowCompositionTarget = PresentationSource.FromVisual(this).CompositionTarget;
+                HwndSource.FromHwnd(new WindowInteropHelper(this).Handle).AddHook(WindowProc);
+            };
             #endregion
         }
 
