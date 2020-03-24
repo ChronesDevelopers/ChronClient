@@ -10,4 +10,9 @@ namespace ChronClient.Data
     {
         public static readonly string TargetWindowName = @"Minecraft";
     }
+
+    public static class GUI_Data
+    {
+        public static double ColorRGBCounterSpeed = 1;
+    }
 }

@@ -10,28 +10,41 @@ using System.Windows.Forms;
 using Chrones.Cmr.Imports;
 using ChronClient.Data;
 using System.Drawing.Drawing2D;
+using System.Windows.Forms.Integration;
 
 namespace ChronClient.GUI.Forms
 {
-    public partial class Overlay : Form
+    public partial class OldOverlay : Form
     {
         int InitialStyle;
         Import.SimpleRECT rect = new Import.SimpleRECT();
 
         Graphics g;
 
-        public Overlay()
+        
+
+        public OldOverlay()
         {
             InitializeComponent();
+
             CommunicationData.Overlay.TargetWindowHandle = Import.FindWindow(null, C_Data.TargetWindowName);
-            this.BackColor = Color.FromArgb(113, 20, 153);
-            this.TransparencyKey = Color.FromArgb(113, 20, 153);
+            /*this.BackColor = Color.FromArgb(113, 20, 153);
+            this.TransparencyKey = Color.FromArgb(113, 20, 153);*/
+            this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            this.TransparencyKey = Color.FromKnownColor(KnownColor.Control);
+            this.Update();
             this.FormBorderStyle = FormBorderStyle.None;
             this.TopLevel = true;
             this.TopMost = true;
 
             this.InitialStyle = Import.GetWindowLong(this.Handle, -20);
             Import.SetWindowLong(this.Handle, -20, InitialStyle | 0x80000 | 0x20);
+
+            elementHost.Dock = DockStyle.Fill;
+            GUI.Controls.Forms.OverlayUserControl overlayUserControl = new GUI.Controls.Forms.OverlayUserControl();
+            overlayUserControl.InitializeComponent();
+            elementHost.Child = overlayUserControl;
+
             this.Focus();
         }
 
@@ -63,7 +76,7 @@ namespace ChronClient.GUI.Forms
 
         private void Overlay_Paint(object sender, PaintEventArgs e)
         {
-            g = e.Graphics;
+            /*g = e.Graphics;
             g.SmoothingMode = SmoothingMode.HighQuality;
             Pen p;
             Brush b;
@@ -76,7 +89,7 @@ namespace ChronClient.GUI.Forms
 
             sizef = g.MeasureString("ChronClient", f);
 
-            b = new SolidBrush(Color.FromArgb(76, 152, 237));
+            b = new SolidBrush(Color.FromArgb(0, 76, 152, 237));
             g.FillRectangle(b, 100, 100, sizef.Width, sizef.Height);
 
             p = new Pen(Color.FromArgb(30, 57, 87));
@@ -84,7 +97,7 @@ namespace ChronClient.GUI.Forms
             g.DrawRectangle(p, 100, 100, sizef.Width, sizef.Height);
 
             b = new SolidBrush(Color.FromArgb(0, 0, 0));
-            g.DrawString("ChronClient", f, b, 100, 100);
+            g.DrawString("ChronClient", f, b, 100, 100);*/
         }
     }
 }

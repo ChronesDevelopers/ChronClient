@@ -11,6 +11,7 @@ using System.Windows.Media;
 using Chrones.Cmr.Imports;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
+using Chrones.Cmr.Color;
 
 namespace ChronClient.GUI
 {
@@ -19,7 +20,6 @@ namespace ChronClient.GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        DispatcherTimer SlowUpdateGUI;
 
         #region MaximizingFix
         CompositionTarget WindowCompositionTarget { get; set; }
@@ -62,17 +62,11 @@ namespace ChronClient.GUI
         }
         #endregion
 
-
         public MainWindow()
         {
             InitializeComponent();
 
-            #region Timer
-            SlowUpdateGUI = new DispatcherTimer();
-            SlowUpdateGUI.Interval = new TimeSpan(100);
-            SlowUpdateGUI.Tick += SlowUpdateGUI_Tick;
-            SlowUpdateGUI.Start();
-            #endregion
+            CommunicationData.MainWindow.WindowObject = this;
 
             #region MaximizingFix
             SourceInitialized += (s, e) =>
@@ -81,6 +75,8 @@ namespace ChronClient.GUI
                 HwndSource.FromHwnd(new WindowInteropHelper(this).Handle).AddHook(WindowProc);
             };
             #endregion
+
+            WelcomeScreen();     
         }
 
         private void Control_Close_MouseUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
@@ -105,13 +101,10 @@ namespace ChronClient.GUI
             this.WindowState = WindowState.Minimized;
         }
     
-        private void SlowUpdateGUI_Tick(object sender, EventArgs e)
+        public void WelcomeScreen()
         {
-            if (CommunicationData.MainWindow.WelcomeScreenAllowed)
-            {
-                DoubleAnimation db = new DoubleAnimation(1, new Duration(new TimeSpan(0, 0, 1)));
-                this.Content.BeginAnimation(UIElement.OpacityProperty, db);
-            }
+            DoubleAnimation db = new DoubleAnimation(0, 1, new Duration(TimeSpan.FromMilliseconds(2500)));
+            this.Content.BeginAnimation(UIElement.OpacityProperty, db);
         }
 
         private void NavigationFrame_Navigated(object sender, NavigatingCancelEventArgs e)
@@ -125,7 +118,7 @@ namespace ChronClient.GUI
             ta.To = new Thickness(0, 0, 0, 0);
             if (e.NavigationMode == NavigationMode.New)
             {
-                ta.From = new Thickness(500, 0, 0, 0);
+                ta.From = new Thickness(0, 500, 0, 0);
             }
             else if (e.NavigationMode == NavigationMode.Back)
             {

@@ -71,7 +71,12 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Windows.Forms.DataVisualization.Design" />
+    <Reference Include="System.Windows.Input.Manipulations" />
+    <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -91,7 +96,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="ChronClient\GUI\Controls\Forms\Overlay\ChronClient.GUI.Controls.Forms.OverlayUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChronClient\GUI\Controls\Styles\ChronClient.GUI.Controls.Styles.C_ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\GUI\ChronClient.GUI.Overlay.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,6 +129,12 @@
     <Compile Include="ChronClient\Console\ChronClient.Main.cs" />
     <Compile Include="ChronClient\Data\ChronClient.Data.cs" />
     <Compile Include="ChronClient\Data\ChronClient.Data.StringInformationSetup.cs" />
+    <Compile Include="ChronClient\GUI\Controls\Forms\Overlay\ChronClient.GUI.Controls.Forms.OverlayUserControl.xaml.cs">
+      <DependentUpon>ChronClient.GUI.Controls.Forms.OverlayUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\ChronClient.GUI.Overlay.xaml.cs">
+      <DependentUpon>ChronClient.GUI.Overlay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ChronClient\GUI\Forms\ChronClient.GUI.Forms.Overlay.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,10 +156,14 @@
     <Compile Include="ChronClient\GUI\Page\Page\ChronClient.GUI.MainWindow.DashboardPage.WelcomePage.xaml.cs">
       <DependentUpon>ChronClient.GUI.MainWindow.DashboardPage.WelcomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChronClient\Memory.cs\ChronClient.MemoryManagement.cs" />
+    <Compile Include="ChronClient\Modules\ChronClient.ModuleManagment.cs" />
+    <Compile Include="ChronClient\Modules\ChronClient.ModuleManagmentData.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Airjump.cs" />
+    <Compile Include="lib\cmr\Cmr.MemoryManagement.cs" />
     <Compile Include="ChronClient\temp\template\ChronClient\GUI\Temp.Template.ChronClient.GUI.WINDOW.xaml.cs">
       <DependentUpon>Temp.Template.ChronClient.GUI.WINDOW.xaml</DependentUpon>
     </Compile>
+    <Compile Include="lib\cmr\Cmr.Color.cs" />
     <Compile Include="lib\cmr\Cmr.cs" />
     <Compile Include="lib\cmr\Cmr.Font.cs" />
     <Compile Include="lib\cmr\Cmr.Imports.cs" />

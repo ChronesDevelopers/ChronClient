@@ -1,6 +1,6 @@
 ﻿namespace ChronClient.GUI.Forms
 {
-    partial class Overlay
+    partial class OldOverlay
     {
         /// <summary>
         /// Required designer variable.
@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.Timer_SnapToWindow = new System.Windows.Forms.Timer(this.components);
+            this.elementHost = new System.Windows.Forms.Integration.ElementHost();
             this.SuspendLayout();
             // 
             // Timer_SnapToWindow
@@ -38,11 +39,21 @@
             this.Timer_SnapToWindow.Interval = 10;
             this.Timer_SnapToWindow.Tick += new System.EventHandler(this.Timer_SnapToWindow_Tick);
             // 
+            // elementHost
+            // 
+            this.elementHost.Location = new System.Drawing.Point(12, 12);
+            this.elementHost.Name = "elementHost";
+            this.elementHost.Size = new System.Drawing.Size(776, 426);
+            this.elementHost.TabIndex = 0;
+            this.elementHost.Text = "elementHost1";
+            this.elementHost.Child = null;
+            // 
             // Overlay
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.elementHost);
             this.Name = "Overlay";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -57,5 +68,6 @@
         #endregion
 
         private System.Windows.Forms.Timer Timer_SnapToWindow;
+        private System.Windows.Forms.Integration.ElementHost elementHost;
     }
 }

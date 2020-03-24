@@ -8,7 +8,9 @@ using Chrones.Cmr;
 using Chrones.Cmr.Font;
 using ChronClient.Data;
 using ChronClient.GUI.Forms;
-using ChronClient.Data;
+using Chrones.Cmr.Imports;
+using System.Diagnostics;
+using Chrones.Cmr.Color;
 
 namespace ChronClient
 {
@@ -19,9 +21,11 @@ namespace ChronClient
             Console.Title = @"ChronClient Console";
             cmr.EnableVirtualTerminalProcessing();
             cmr.DisableQuickEdit();
+            Process.Start("minecraft://");
             StartScreen();
             Console.WriteLine($@"{cmr.cf(255, 255, 255)}Thanks for using ChronClient :D");
             cmr.clogl(ConsoleData.ChronClientLogName, "Loading Application");
+            ColorRGBManagment.StartColorRGBCounter();
             StroringInformationSetup.FileSetup();
             Thread.Sleep(500);
             cmr.clogl(ConsoleData.ChronClientLogName, "Loading Cmr");
@@ -31,6 +35,7 @@ namespace ChronClient
             cmr.clogl(ConsoleData.ChronClientLogName, "Loading GUI");
             Thread.Sleep(800);
             OverlayManagment.StartOverlay();
+            cmr.MinimizeConsole();
             Thread.Sleep(200);
             cmr.clogl(ConsoleData.ChronClientLogName, "//Loading Modules");
             Thread.Sleep(200);
@@ -47,7 +52,6 @@ namespace ChronClient
             cmr.clogl(ConsoleData.ChronClientLogName, "//Loading Module_NoFallDamage");
             Thread.Sleep(50);
             cmr.clogl(ConsoleData.ChronClientLogName, "Finished!");
-            CommunicationData.MainWindow.WelcomeScreenAllowed = true;
         }
 
         public static void StartScreen()
@@ -60,12 +64,12 @@ namespace ChronClient
             Console.Write("######################################################################################\n"); Console.Write(cmr.cf(0,0,0));
             Console.Write(" Welcome to the                                                                       \n"); Console.Write(cmr.cf(71, 255, 123));
             Console.Write("######################################################################################\n"); Console.Write(cmr.cf(0,0,0));
-            Console.Write("                    ██████████  ████████  ██████████  ██        ██                    \n");
-            Console.Write("                    ██          ██    ██  ██      ██  ████      ██                    \n");
-            Console.Write("                    ██          ████████  ██      ██  ██  ██    ██                    \n");
-            Console.Write("                    ██          ████      ██      ██  ██    ██  ██                    \n");
-            Console.Write("                    ██          ██  ██    ██      ██  ██      ████                    \n");
-            Console.Write("                    ██████████  ██    ██  ██████████  ██        ██                    \n"); Console.Write(cmr.cf(71, 255, 123));
+            Console.Write("              ██████████  ██      ██  ████████  ██████████  ██        ██              \n");
+            Console.Write("              ██          ██      ██  ██    ██  ██      ██  ████      ██              \n");
+            Console.Write("              ██          ██████████  ████████  ██      ██  ██  ██    ██              \n");
+            Console.Write("              ██          ██      ██  ████      ██      ██  ██    ██  ██              \n");
+            Console.Write("              ██          ██      ██  ██  ██    ██      ██  ██      ████              \n");
+            Console.Write("              ██████████  ██      ██  ██    ██  ██████████  ██        ██              \n"); Console.Write(cmr.cf(71, 255, 123));
             Console.Write("######################################################################################\n"); Console.Write(cmr.cf(0,0,0));
             Console.Write("           ██████████  ██          ██  ██████████  ██        ██  ██████████           \n");
             Console.Write("           ██          ██          ██  ██          ████      ██      ██               \n");
@@ -97,21 +101,73 @@ namespace ChronClient
             }
         }
 
-        public static class OverlayManagment
+        public static class OldOverlayManagment
         {
             public static Thread OverlayThread;
             public static void StartOverlay()
             {
                 OverlayThread = new Thread(OverlayLoop);
+                OverlayThread.SetApartmentState(ApartmentState.STA);
                 OverlayThread.Start();
             }
 
             private static void OverlayLoop()
             {
                 System.Windows.Forms.Application.EnableVisualStyles();
-                CommunicationData.Overlay.overlay = new ChronClient.GUI.Forms.Overlay();
+                CommunicationData.Overlay.overlay = new ChronClient.GUI.Forms.OldOverlay();
                 System.Windows.Forms.Application.Run(CommunicationData.Overlay.overlay);
                 CommunicationData.Overlay.overlay.Show();
+            }
+        }
+
+        public static class OverlayManagment
+        {
+            public static GUI.Overlay overlay;
+            public static Thread OverlayThread;
+
+            public static void StartOverlay()
+            {
+                OverlayThread = new Thread(OverlayStart);
+                OverlayThread.SetApartmentState(ApartmentState.STA);
+                OverlayThread.Priority = ThreadPriority.AboveNormal;
+                OverlayThread.Start();
+            }
+
+            private static void OverlayStart()
+            {
+                overlay = new GUI.Overlay();
+                overlay.InitializeComponent();
+                overlay.Show();
+                System.Windows.Threading.Dispatcher.Run();
+            }
+        }
+
+        public static class ColorRGBManagment
+        {
+            public static Thread ColorRGBCounterThread;
+
+            public static void StartColorRGBCounter()
+            {
+                ColorRGBCounterThread = new Thread(new ThreadStart(ColorRGBCounterLoop));
+                ColorRGBCounterThread.Priority = ThreadPriority.BelowNormal;
+                ColorRGBCounterThread.Start();
+            }
+
+            private static void ColorRGBCounterLoop()
+            {
+                while (true) 
+                {
+                    try
+                    {
+                        Data.CommunicationData.GUI.ColorRGBCounter += ChronClient.Data.GUI_Data.ColorRGBCounterSpeed;
+                        Data.CommunicationData.GUI.ColorRGBCounter = Math.Max(Data.CommunicationData.GUI.ColorRGBCounter, 0);
+                        Data.CommunicationData.GUI.ColorRGBCounter %= 1536;
+                    } catch
+                    {
+                        Data.CommunicationData.GUI.ColorRGBCounter = 0;
+                    }
+                    Thread.Sleep(10);
+                }
             }
         }
     }

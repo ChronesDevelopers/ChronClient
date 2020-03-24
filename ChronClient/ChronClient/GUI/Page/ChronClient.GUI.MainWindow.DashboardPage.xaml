@@ -10,21 +10,24 @@
 
     <Grid>
         <DockPanel LastChildFill="True">
-            <Grid Height="50" VerticalAlignment="Top" DockPanel.Dock="Top">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="100"/>
-                </Grid.ColumnDefinitions>
-                <Button x:Name="SettingsButton" Content="Settings" Click="SettingsButton_Click"  Style="{StaticResource C_Button}" Grid.Column="1" Margin="5"/>
-                <Border BorderBrush="#FF707070" BorderThickness="0,0,0,3" Grid.ColumnSpan="50"/>
+            <Grid DockPanel.Dock="Bottom" Width="auto" Height="40">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="150"/>
+                        <ColumnDefinition Width="150"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Content="Back" Style="{StaticResource C_Button_Flat}" Click="Button_Click" Width="auto" Height="auto"/>
+                    <Button Grid.Column="1" Content="Modules" Style="{StaticResource C_Button_Flat}" Width="auto" Height="auto"/>
+                    <Button Grid.Column="2" Content="About" Style="{StaticResource C_Button_Flat}" Width="auto" Height="auto"/>
+                    <Button Grid.Column="3" Content="Settings" Style="{StaticResource C_Button_Flat}" Click="SettingsButton_Click" Width="auto" Height="auto"/>
+                </Grid>
             </Grid>
             <Grid x:Name="ContentShower" Margin="5,1.5,5,5">
                 <Frame x:Name="ContentShowerNavigationFrame" Navigating="ContentShowerNavigationFrame_Navigated" Content="Frame" NavigationUIVisibility="Hidden" Source="/ChronClient;component/ChronClient/GUI/Page/Page/ChronClient.GUI.MainWindow.DashboardPage.WelcomePage.xaml" Margin="0"/>
             </Grid>
         </DockPanel>
-        <Grid x:Name="BackNav">
-            <Button Click="Button_Click"  Style="{StaticResource C_Button}" Content="I am a Dashboard - DON'T CLICK" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="400" Height="60" Margin="200,0,200,30"/>
-        </Grid>
 
     </Grid>
 </Page>
