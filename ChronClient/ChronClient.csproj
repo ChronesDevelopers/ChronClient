@@ -108,6 +108,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ChronClient\GUI\Controls\UserControls\ModuleControl\C_Control_C_Control_ModuleToggle.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChronClient\GUI\Page\ChronClient.GUI.MainWindow.DashboardPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -124,6 +128,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="ChronClient\GUI\Controls\UserControls\ModuleControl\C_Control_C_Control_ModuleToggle.xaml.cs">
+      <DependentUpon>C_Control_C_Control_ModuleToggle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\Input\ChronClient.Input.cs" />
+    <Compile Include="ChronClient\Memory\ChronClient.Memory0.cs" />
     <Compile Include="ChronClient\Data\ChronClient.Data.CommunicationData.cs" />
     <Compile Include="ChronClient\Data\ChronClient.Data.Console.cs" />
     <Compile Include="ChronClient\Console\ChronClient.Main.cs" />
@@ -157,8 +166,9 @@
       <DependentUpon>ChronClient.GUI.MainWindow.DashboardPage.WelcomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChronClient\Modules\ChronClient.ModuleManagment.cs" />
-    <Compile Include="ChronClient\Modules\ChronClient.ModuleManagmentData.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Airjump.cs" />
+    <Compile Include="ChronClient\Threads\ChronClient.Threads.cs" />
+    <Compile Include="lib\cmr\Cmr.Input.cs" />
     <Compile Include="lib\cmr\Cmr.MemoryManagement.cs" />
     <Compile Include="ChronClient\temp\template\ChronClient\GUI\Temp.Template.ChronClient.GUI.WINDOW.xaml.cs">
       <DependentUpon>Temp.Template.ChronClient.GUI.WINDOW.xaml</DependentUpon>
@@ -166,7 +176,7 @@
     <Compile Include="lib\cmr\Cmr.Color.cs" />
     <Compile Include="lib\cmr\Cmr.cs" />
     <Compile Include="lib\cmr\Cmr.Font.cs" />
-    <Compile Include="lib\cmr\Cmr.Imports.cs" />
+    <Compile Include="lib\cmr\Cmr.Win32.cs" />
     <Compile Include="lib\cmr\Cmr.Main.cs" />
     <Compile Include="ChronClient\GUI\ChronClient.GUI.MainWindow.xaml.cs">
       <DependentUpon>ChronClient.GUI.MainWindow.xaml</DependentUpon>

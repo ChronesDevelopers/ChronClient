@@ -187,8 +187,6 @@ namespace Chrones.Cmr.MemoryManagement
             uint oldprotect;
 
             VirtualProtectEx(this.hProc, (IntPtr)(ModuleBaseAddress + Address), (UIntPtr)write.Length, 0x40, out oldprotect);
-            Debug.WriteLine("0x{0:X}", oldprotect);
-            Debug.WriteLine("0x{0:X}", ModuleBaseAddress + Address);
             WriteProcessMemory(this.hProc, ModuleBaseAddress + Address, write, write.Length, out _);
             VirtualProtectEx(this.hProc, (IntPtr)(ModuleBaseAddress + Address), (UIntPtr)write.Length, oldprotect, out oldprotect);
         }
@@ -196,25 +194,32 @@ namespace Chrones.Cmr.MemoryManagement
         public void PatchMemory(int Address, byte[] write)
         {
             uint oldprotect;
-            uint old2;
 
             VirtualProtectEx(this.hProc, (IntPtr)(Address), (UIntPtr)write.Length, 0x40, out oldprotect);
-            VirtualProtectEx(this.hProc, (IntPtr)(Address), (UIntPtr)write.Length, 0x40, out old2);
-            Debug.WriteLine("0x{0:X}", old2);
-            Debug.WriteLine("0x{0:X}", Address);
             WriteProcessMemory(this.hProc, (IntPtr)Address, write, write.Length, IntPtr.Zero);
             VirtualProtectEx(this.hProc, (IntPtr)(Address), (UIntPtr)write.Length, oldprotect, out oldprotect);
         }
 
         public void NopMemory(string ModuleBase, int Address, int length)
         {
-            
+
             byte[] NopArray = new byte[length];
             for (int i = 0; i < NopArray.Length; i++)
             {
                 NopArray[i] = 0x90;
             }
             PatchMemory(ModuleBase, Address, NopArray);
+        }
+
+        public void NopMemory(int Address, int length)
+        {
+
+            byte[] NopArray = new byte[length];
+            for (int i = 0; i < NopArray.Length; i++)
+            {
+                NopArray[i] = 0x90;
+            }
+            PatchMemory(Address, NopArray);
         }
         #endregion
 

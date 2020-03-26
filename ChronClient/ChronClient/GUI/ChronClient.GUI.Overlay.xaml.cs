@@ -1,5 +1,7 @@
 ﻿using ChronClient.Data;
-using Chrones.Cmr.Imports;
+using ChronClient.Input;
+using Chrones.Cmr;
+using Chrones.Cmr.Win32API;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,10 +25,11 @@ namespace ChronClient.GUI
     /// </summary>
     public partial class Overlay : Window
     {
-        Import.SimpleRECT rect = new Import.SimpleRECT();
+        Win32.SimpleRECT rect = new Win32.SimpleRECT();
         DispatcherTimer SnapToWindowTimer;
 
         IntPtr Handle;
+
         public Overlay()
         {
             InitializeComponent();
@@ -48,29 +51,47 @@ namespace ChronClient.GUI
             const int WS_EX_TRANSPARENT = 0x00000020;
             const int GWL_EXSTYLE = -20;
 
-            int extendedSyle = Import.GetWindowLong(this.Handle, GWL_EXSTYLE);
-            Import.SetWindowLong(this.Handle, GWL_EXSTYLE, extendedSyle | WS_EX_TRANSPARENT);
+            int extendedSyle = Win32.GetWindowLong(this.Handle, GWL_EXSTYLE);
+            Win32.SetWindowLong(this.Handle, GWL_EXSTYLE, extendedSyle | WS_EX_TRANSPARENT);
         }
 
         public void SnapToWindowTimer_Tick(object sender, EventArgs e)
         {
-            CommunicationData.Overlay.TargetWindowHandle = Import.FindWindow(null, C_Data.TargetWindowName);
-            Import.GetWindowRect(CommunicationData.Overlay.TargetWindowHandle, out rect);
-            Import.GetWindowRect(CommunicationData.Overlay.TargetWindowHandle, out rect);
+            CommunicationData.Overlay.TargetWindowHandle = Win32.FindWindow(null, C_Data.TargetWindowName);
+            Win32.GetWindowRect(CommunicationData.Overlay.TargetWindowHandle, out rect);
+            Win32.GetWindowRect(CommunicationData.Overlay.TargetWindowHandle, out rect);
             this.Width = rect.right - rect.left;
             this.Height = rect.bottom - rect.top;
             this.Top = rect.top;
             this.Left = rect.left;
 
-            IntPtr ForegroundWindowHandle = Import.GetForegroundWindow();
+            IntPtr ForegroundWindowHandle = Win32.GetForegroundWindow();
             if (ForegroundWindowHandle == this.Handle)
             {
-                Import.SetForegroundWindow(CommunicationData.Overlay.TargetWindowHandle);
+                Win32.SetForegroundWindow(CommunicationData.Overlay.TargetWindowHandle);
                 this.Show();
             }
             else if (ForegroundWindowHandle == CommunicationData.Overlay.TargetWindowHandle)
-            {
+            {  
                 this.Show();
+                if (CInput.GetKeyStateRightShiftPressed())
+                {
+                    if (cmr_input.GetKeyStateDown(Win32.VirtualKeys.Control))
+                    {
+                        Win32.SetForegroundWindow(Win32.GetConsoleWindow());
+                    } else
+                    {
+                        Win32.SetForegroundWindow(Data.CommunicationData.MainWindow.WindowHandle);
+                    }
+                }
+            }
+            else if (Win32.GetForegroundWindow() == Win32.GetConsoleWindow())
+            {
+                this.Hide();
+                if (CInput.GetKeyStateRightShiftPressed())
+                {
+                    Win32.SetForegroundWindow(CommunicationData.Overlay.TargetWindowHandle);
+                }
             }
             else
             {

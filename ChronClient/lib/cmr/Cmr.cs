@@ -1,4 +1,4 @@
-﻿using Chrones.Cmr.Imports;
+﻿using Chrones.Cmr.Win32API;
 using System;
 
 namespace Chrones.Cmr
@@ -7,10 +7,10 @@ namespace Chrones.Cmr
     {
         public static void EnableVirtualTerminalProcessing()
         {
-            IntPtr hOut = Import.GetStdHandle(-11);
+            IntPtr hOut = Win32.GetStdHandle(-11);
             UInt32 dwMode;
-            Import.GetConsoleMode(hOut, out dwMode);
-            Import.SetConsoleMode(hOut, dwMode | 0x4);
+            Win32.GetConsoleMode(hOut, out dwMode);
+            Win32.SetConsoleMode(hOut, dwMode | 0x4);
         }
 
         public static void cout()
@@ -118,47 +118,47 @@ namespace Chrones.Cmr
         #region ConsoleWindow
         public static void CenterConsole()
         {
-            IntPtr hwnd = Import.GetConsoleWindow();
-            Import.RECT rectWindow;
-            Import.GetWindowRect(hwnd, out rectWindow);
+            IntPtr hwnd = Win32.GetConsoleWindow();
+            Win32.RECT rectWindow;
+            Win32.GetWindowRect(hwnd, out rectWindow);
 
-            int screen_width = Import.GetSystemMetrics(Import.SystemMetric.SM_CXSCREEN);
-            int screen_height = Import.GetSystemMetrics(Import.SystemMetric.SM_CYSCREEN);
+            int screen_width = Win32.GetSystemMetrics(Win32.SystemMetric.SM_CXSCREEN);
+            int screen_height = Win32.GetSystemMetrics(Win32.SystemMetric.SM_CYSCREEN);
             int console_width = (rectWindow.right - rectWindow.left);
             int console_height = (rectWindow.bottom - rectWindow.top);
 
-            Import.SetWindowPos(hwnd,(IntPtr)0,(screen_width - console_width) / 2, (screen_height - console_height) / 2, 0, 0, 1);
+            Win32.SetWindowPos(hwnd,(IntPtr)0,(screen_width - console_width) / 2, (screen_height - console_height) / 2, 0, 0, 1);
         }
         
         public static void MaximizeConsole()
         {
-            Import.ShowWindow(Import.GetConsoleWindow(), 3);
+            Win32.ShowWindow(Win32.GetConsoleWindow(), 3);
         }
 
         public static void MinimizeConsole()
         {
-            Import.ShowWindow(Import.GetConsoleWindow(), 6);
+            Win32.ShowWindow(Win32.GetConsoleWindow(), 6);
         }
 
         public static void HideConsole()
         {
-            Import.ShowWindow(Import.GetConsoleWindow(), 0);
+            Win32.ShowWindow(Win32.GetConsoleWindow(), 0);
         }
 
         public static void RestoreConsole()
         {
-            Import.ShowWindow(Import.GetConsoleWindow(), 9);
+            Win32.ShowWindow(Win32.GetConsoleWindow(), 9);
         }
 
         public static void FullscreenConsole()
         {
-            Import.COORD zero = new Import.COORD(100,100);
-            Import.SetConsoleDisplayMode(Import.GetStdHandle(Import.STD_OUTPUT_HANDLE), 1, out zero);
+            Win32.COORD zero = new Win32.COORD(100,100);
+            Win32.SetConsoleDisplayMode(Win32.GetStdHandle(Win32.STD_OUTPUT_HANDLE), 1, out zero);
 
-            IntPtr hConsole = Import.GetStdHandle(-11);   // get console handle
-            Import.COORD xy = new Import.COORD(100, 100);
+            IntPtr hConsole = Win32.GetStdHandle(-11);   // get console handle
+            Win32.COORD xy = new Win32.COORD(100, 100);
             //Import.SetConsoleDisplayMode(hConsole, 1, out xy); // set the console to fullscreen
-            Import.SetConsoleDisplayMode(hConsole, 2, out xy);
+            Win32.SetConsoleDisplayMode(hConsole, 2, out xy);
         }
 
         public static void FullscreenWindowedConsole()
@@ -168,10 +168,10 @@ namespace Chrones.Cmr
 
         public static void DisableQuickEdit()
         {
-            IntPtr conHandle = Import.GetStdHandle(-10);
+            IntPtr conHandle = Win32.GetStdHandle(-10);
             int mode;
 
-            if (!Import.GetConsoleMode(conHandle, out mode))
+            if (!Win32.GetConsoleMode(conHandle, out mode))
             {
                 // error getting the console mode. Exit.
                 return;
@@ -179,7 +179,7 @@ namespace Chrones.Cmr
 
             mode = mode & ~(64 | 128);
 
-            if (!Import.SetConsoleMode(conHandle, mode))
+            if (!Win32.SetConsoleMode(conHandle, mode))
             {
                 // error setting console mode.
             }
@@ -187,10 +187,10 @@ namespace Chrones.Cmr
 
         public static void EnableQuickEdit()
         {
-            IntPtr conHandle = Import.GetStdHandle(-10);
+            IntPtr conHandle = Win32.GetStdHandle(-10);
             int mode;
 
-            if (!Import.GetConsoleMode(conHandle, out mode))
+            if (!Win32.GetConsoleMode(conHandle, out mode))
             {
                 // error getting the console mode. Exit.
                 return;
@@ -198,7 +198,7 @@ namespace Chrones.Cmr
 
             mode = mode | (64 | 128);
 
-            if (!Import.SetConsoleMode(conHandle, mode))
+            if (!Win32.SetConsoleMode(conHandle, mode))
             {
                 // error setting console mode.
             }

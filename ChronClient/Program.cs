@@ -11,7 +11,7 @@ namespace ChronClient
         [STAThread]
         public static void Main(string[] args)
         {
-            ChronClientConsole.Application.InitializeThread();
+            Threads.ThreadManagement.Application.InitializeThread();
             App app = new App();
             app.InitializeComponent();
             app.Run();

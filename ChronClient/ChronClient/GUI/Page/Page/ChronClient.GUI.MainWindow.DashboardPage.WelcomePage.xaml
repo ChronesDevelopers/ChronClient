@@ -1,4 +1,5 @@
 ﻿<Page x:Class="ChronClient.GUI.MainWindow_DashboardPage_WelcomePage"
+      xmlns:ModuleControl="clr-namespace:ChronClient.GUI.UserControls.ModuleControl"  
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -10,5 +11,6 @@
 
     <Grid>
         <TextBlock Text="Welcome Back!" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="29" FontFamily="Consolas"/>
+        <ModuleControl:C_Control_ModuleToggle VerticalAlignment="Top" HorizontalAlignment="Center" Width="800" Height="80" ModuleName="Hello World"/>
     </Grid>
 </Page>

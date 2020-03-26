@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Chrones.Cmr.Imports;
+using Chrones.Cmr.Win32API;
 using ChronClient.Data;
 using System.Drawing.Drawing2D;
 using System.Windows.Forms.Integration;
@@ -17,7 +17,7 @@ namespace ChronClient.GUI.Forms
     public partial class OldOverlay : Form
     {
         int InitialStyle;
-        Import.SimpleRECT rect = new Import.SimpleRECT();
+        Win32.SimpleRECT rect = new Win32.SimpleRECT();
 
         Graphics g;
 
@@ -27,7 +27,7 @@ namespace ChronClient.GUI.Forms
         {
             InitializeComponent();
 
-            CommunicationData.Overlay.TargetWindowHandle = Import.FindWindow(null, C_Data.TargetWindowName);
+            CommunicationData.Overlay.TargetWindowHandle = Win32.FindWindow(null, C_Data.TargetWindowName);
             /*this.BackColor = Color.FromArgb(113, 20, 153);
             this.TransparencyKey = Color.FromArgb(113, 20, 153);*/
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
@@ -37,8 +37,8 @@ namespace ChronClient.GUI.Forms
             this.TopLevel = true;
             this.TopMost = true;
 
-            this.InitialStyle = Import.GetWindowLong(this.Handle, -20);
-            Import.SetWindowLong(this.Handle, -20, InitialStyle | 0x80000 | 0x20);
+            this.InitialStyle = Win32.GetWindowLong(this.Handle, -20);
+            Win32.SetWindowLong(this.Handle, -20, InitialStyle | 0x80000 | 0x20);
 
             elementHost.Dock = DockStyle.Fill;
             GUI.Controls.Forms.OverlayUserControl overlayUserControl = new GUI.Controls.Forms.OverlayUserControl();
@@ -50,18 +50,18 @@ namespace ChronClient.GUI.Forms
 
         private void Timer_SnapToWindow_Tick(object sender, EventArgs e)
         {
-            CommunicationData.Overlay.TargetWindowHandle = Import.FindWindow(null, C_Data.TargetWindowName);
-            Import.GetWindowRect(CommunicationData.Overlay.TargetWindowHandle, out rect);
+            CommunicationData.Overlay.TargetWindowHandle = Win32.FindWindow(null, C_Data.TargetWindowName);
+            Win32.GetWindowRect(CommunicationData.Overlay.TargetWindowHandle, out rect);
             this.Size = new Size(rect.right - rect.left, rect.bottom - rect.top);
             this.Top = rect.top;
             this.Left = rect.left;
             this.TopLevel = true;
             this.TopMost = true;
 
-            IntPtr ForegroundWindowHandle = Import.GetForegroundWindow();
+            IntPtr ForegroundWindowHandle = Win32.GetForegroundWindow();
             if (ForegroundWindowHandle == this.Handle)
             {
-                Import.SetForegroundWindow(CommunicationData.Overlay.TargetWindowHandle);
+                Win32.SetForegroundWindow(CommunicationData.Overlay.TargetWindowHandle);
                 this.Show();
             } 
             else if (ForegroundWindowHandle == CommunicationData.Overlay.TargetWindowHandle) 

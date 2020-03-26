@@ -1,5 +1,5 @@
 ﻿using Chrones.Cmr;
-using Chrones.Cmr.Imports;
+using Chrones.Cmr.Win32API;
 using System;
 using System.Runtime.InteropServices;
 using System.Windows;
@@ -20,21 +20,21 @@ namespace ChronClient.GUI
 
         double CachedMinHeight { get; set; }
 
-        Import.POINT CachedMinTrackSize { get; set; }
+        Win32.POINT CachedMinTrackSize { get; set; }
 
         IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             switch (msg)
             {
                 case 0x0024:
-                    Import.MINMAXINFO mmi = (Import.MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(Import.MINMAXINFO));
-                    IntPtr monitor = Import.MonitorFromWindow(hwnd, 0x00000002 /*MONITOR_DEFAULTTONEAREST*/);
+                    Win32.MINMAXINFO mmi = (Win32.MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(Win32.MINMAXINFO));
+                    IntPtr monitor = Win32.MonitorFromWindow(hwnd, 0x00000002 /*MONITOR_DEFAULTTONEAREST*/);
                     if (monitor != IntPtr.Zero)
                     {
-                        Import.MONITORINFO monitorInfo = new Import.MONITORINFO { };
-                        Import.GetMonitorInfo(monitor, monitorInfo);
-                        Import.RECT rcWorkArea = monitorInfo.rcWork;
-                        Import.RECT rcMonitorArea = monitorInfo.rcMonitor;
+                        Win32.MONITORINFO monitorInfo = new Win32.MONITORINFO { };
+                        Win32.GetMonitorInfo(monitor, monitorInfo);
+                        Win32.RECT rcWorkArea = monitorInfo.rcWork;
+                        Win32.RECT rcMonitorArea = monitorInfo.rcMonitor;
                         mmi.ptMaxPosition.x = Math.Abs(rcWorkArea.left - rcMonitorArea.left);
                         mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
                         mmi.ptMaxSize.x = Math.Abs(rcWorkArea.right - rcWorkArea.left);

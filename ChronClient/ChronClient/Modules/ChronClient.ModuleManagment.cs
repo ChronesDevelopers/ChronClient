@@ -12,5 +12,14 @@ namespace ChronClient.Modules
         {
 
         }
+
+        public static class OnLoad
+        {
+            public static void Start()
+            {
+                // Setup Modules
+                Module.Airjump.ToggleState = true;
+            }
+        }
     }
 }

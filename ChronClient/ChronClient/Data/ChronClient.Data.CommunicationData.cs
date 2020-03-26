@@ -13,6 +13,7 @@ namespace ChronClient.Data
         public static class MainWindow
         {
             public static ChronClient.GUI.MainWindow WindowObject;
+            public static IntPtr WindowHandle;
         }
 
         public static class Overlay

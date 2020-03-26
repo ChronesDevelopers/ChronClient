@@ -31,6 +31,7 @@ namespace ChronClient.GUI
         {
             //Thread t1 = new Thread(Open100BrowserTabs);
             //t1.Start();
+            Data.CommunicationData.MainWindow.WindowObject.NavigateWithAnimationBool = true;
             this.NavigationService.Navigate(new MainWindow_WelcomePage());
         }
 

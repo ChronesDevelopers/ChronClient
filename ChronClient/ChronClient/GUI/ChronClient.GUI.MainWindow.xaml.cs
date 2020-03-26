@@ -8,10 +8,11 @@ using System.Windows.Navigation;
 using System.Threading;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Chrones.Cmr.Imports;
+using Chrones.Cmr.Win32API;
 using System.Runtime.InteropServices;
 using System.Windows.Interop;
 using Chrones.Cmr.Color;
+using System.Reflection;
 
 namespace ChronClient.GUI
 {
@@ -28,21 +29,21 @@ namespace ChronClient.GUI
 
         double CachedMinHeight { get; set; }
 
-        Import.POINT CachedMinTrackSize { get; set; }
+        Win32.POINT CachedMinTrackSize { get; set; }
 
         IntPtr WindowProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
         {
             switch (msg)
             {
                 case 0x0024:
-                    Import.MINMAXINFO mmi = (Import.MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(Import.MINMAXINFO));
-                    IntPtr monitor = Import.MonitorFromWindow(hwnd, 0x00000002 /*MONITOR_DEFAULTTONEAREST*/);
+                    Win32.MINMAXINFO mmi = (Win32.MINMAXINFO)Marshal.PtrToStructure(lParam, typeof(Win32.MINMAXINFO));
+                    IntPtr monitor = Win32.MonitorFromWindow(hwnd, 0x00000002 /*MONITOR_DEFAULTTONEAREST*/);
                     if (monitor != IntPtr.Zero)
                     {
-                        Import.MONITORINFO monitorInfo = new Import.MONITORINFO { };
-                        Import.GetMonitorInfo(monitor, monitorInfo);
-                        Import.RECT rcWorkArea = monitorInfo.rcWork;
-                        Import.RECT rcMonitorArea = monitorInfo.rcMonitor;
+                        Win32.MONITORINFO monitorInfo = new Win32.MONITORINFO { };
+                        Win32.GetMonitorInfo(monitor, monitorInfo);
+                        Win32.RECT rcWorkArea = monitorInfo.rcWork;
+                        Win32.RECT rcMonitorArea = monitorInfo.rcMonitor;
                         mmi.ptMaxPosition.x = Math.Abs(rcWorkArea.left - rcMonitorArea.left);
                         mmi.ptMaxPosition.y = Math.Abs(rcWorkArea.top - rcMonitorArea.top);
                         mmi.ptMaxSize.x = Math.Abs(rcWorkArea.right - rcWorkArea.left);
@@ -62,11 +63,14 @@ namespace ChronClient.GUI
         }
         #endregion
 
+        public bool NavigateWithAnimationBool = true;
+
         public MainWindow()
         {
             InitializeComponent();
 
             CommunicationData.MainWindow.WindowObject = this;
+            CommunicationData.MainWindow.WindowHandle = new WindowInteropHelper(this).Handle; ;
 
             #region MaximizingFix
             SourceInitialized += (s, e) =>
@@ -116,13 +120,28 @@ namespace ChronClient.GUI
             ta.EasingFunction = EasingFunction;
             ta.DecelerationRatio = 0.7;
             ta.To = new Thickness(0, 0, 0, 0);
-            if (e.NavigationMode == NavigationMode.New)
+
+            if (!NavigateWithAnimationBool)
             {
-                ta.From = new Thickness(0, 500, 0, 0);
-            }
-            else if (e.NavigationMode == NavigationMode.Back)
+                if (e.NavigationMode == NavigationMode.New)
+                {
+                    ta.From = new Thickness(0, 0, 0, 0);
+                }
+                else if (e.NavigationMode == NavigationMode.Back)
+                {
+                    ta.From = new Thickness(0, 0, 0, 0);
+                }
+            } else 
+            if (NavigateWithAnimationBool)
             {
-                ta.From = new Thickness(0, 0, 500, 0);
+                if (e.NavigationMode == NavigationMode.New)
+                {
+                    ta.From = new Thickness(0, 500, 0, 0);
+                }
+                else if (e.NavigationMode == NavigationMode.Back)
+                {
+                    ta.From = new Thickness(0, 0, 500, 0);
+                }
             }
 
             var ta2 = new DoubleAnimation();
@@ -131,9 +150,21 @@ namespace ChronClient.GUI
             QuadraticEase EasingFunction2 = new QuadraticEase();
             EasingFunction2.EasingMode = EasingMode.EaseOut;
             ta.EasingFunction = EasingFunction2;
+            NavigateWithAnimationBool = false;
             //(e.Content as Page).BeginAnimation(MarginProperty, ta);
             NavigationFrame.BeginAnimation(MarginProperty, ta);
             NavigationFrame.BeginAnimation(OpacityProperty, ta2);
+        }
+    
+        public void NavigateWithUpAnimation(object content)
+        {
+            NavigateWithAnimationBool = true;
+            this.NavigationFrame.Navigate(content);
+        }
+
+        public void InvokeShow()
+        {
+            this.Dispatcher.Invoke(DispatcherPriority.Normal, new Action(() => { this.Show(); }));
         }
     }
 }
