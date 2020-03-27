@@ -19,6 +19,7 @@ namespace ChronClient.Modules
             {
                 // Setup Modules
                 Module.Airjump.ToggleState = true;
+                Module.NoFall.ToggleState = true;
             }
         }
     }

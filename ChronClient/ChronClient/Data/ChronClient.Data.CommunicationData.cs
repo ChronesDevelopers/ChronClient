@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chrones.Cmr.Win32API;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,11 @@ namespace ChronClient.Data
         public static class GUI
         {
             public static double ColorRGBCounter = 0;
+        }
+
+        public static class Console
+        {
+            public static IntPtr Handle = Win32.GetConsoleWindow();
         }
     }
 }

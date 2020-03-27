@@ -21,7 +21,7 @@ namespace ChronClient.Input
                 SavedState_VK_RightShift = State_VK_RightShift;
                 State_VK_Control = cmr_input.GetKeyStateDown(Win32.VirtualKeys.Control);
                 State_VK_RightShift = cmr_input.GetKeyStateDown(Win32.VirtualKeys.RightShift);
-                Thread.Sleep(20);
+                Thread.Sleep(25);
             }
         }
 

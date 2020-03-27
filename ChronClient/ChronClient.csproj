@@ -167,6 +167,7 @@
     </Compile>
     <Compile Include="ChronClient\Modules\ChronClient.ModuleManagment.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Airjump.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.NoFall.cs" />
     <Compile Include="ChronClient\Threads\ChronClient.Threads.cs" />
     <Compile Include="lib\cmr\Cmr.Input.cs" />
     <Compile Include="lib\cmr\Cmr.MemoryManagement.cs" />

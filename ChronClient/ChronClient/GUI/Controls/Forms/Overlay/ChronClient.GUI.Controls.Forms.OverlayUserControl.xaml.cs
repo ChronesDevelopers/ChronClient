@@ -28,6 +28,8 @@ namespace ChronClient.GUI.Controls.Forms
         {
             InitializeComponent();
 
+            ModuleList.Text = "Airjump\nNoFall\nTabGUI";
+
             #region ColorRGBTimer
             ColorRGBTimer = new DispatcherTimer();
             ColorRGBTimer.Interval = TimeSpan.FromMilliseconds(10);
@@ -48,6 +50,7 @@ namespace ChronClient.GUI.Controls.Forms
         {
             this.Border_Update_Color_9873.BorderBrush = colorbrush;
             this.TextBlock_Update_Color_8983.Foreground = colorbrush;
+            this.ModuleList.Foreground = colorbrush;
         }
     }
 }

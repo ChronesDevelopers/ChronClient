@@ -66,6 +66,7 @@ namespace ChronClient.GUI
             this.Left = rect.left;
 
             IntPtr ForegroundWindowHandle = Win32.GetForegroundWindow();
+
             if (ForegroundWindowHandle == this.Handle)
             {
                 Win32.SetForegroundWindow(CommunicationData.Overlay.TargetWindowHandle);
@@ -78,20 +79,17 @@ namespace ChronClient.GUI
                 {
                     if (cmr_input.GetKeyStateDown(Win32.VirtualKeys.Control))
                     {
-                        Win32.SetForegroundWindow(Win32.GetConsoleWindow());
+                        Win32.SetForegroundWindow(CommunicationData.Console.Handle);
                     } else
                     {
                         Win32.SetForegroundWindow(Data.CommunicationData.MainWindow.WindowHandle);
                     }
                 }
             }
-            else if (Win32.GetForegroundWindow() == Win32.GetConsoleWindow())
+            else if (ForegroundWindowHandle == CommunicationData.Console.Handle && CInput.GetKeyStateRightShiftPressed() && !cmr_input.GetKeyStateDown(Win32.VirtualKeys.Control))
             {
+                Win32.SetForegroundWindow(CommunicationData.Overlay.TargetWindowHandle);
                 this.Hide();
-                if (CInput.GetKeyStateRightShiftPressed())
-                {
-                    Win32.SetForegroundWindow(CommunicationData.Overlay.TargetWindowHandle);
-                }
             }
             else
             {
