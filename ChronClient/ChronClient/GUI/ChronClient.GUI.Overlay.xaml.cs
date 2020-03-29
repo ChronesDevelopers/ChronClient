@@ -80,6 +80,7 @@ namespace ChronClient.GUI
                     if (cmr_input.GetKeyStateDown(Win32.VirtualKeys.Control))
                     {
                         Win32.SetForegroundWindow(CommunicationData.Console.Handle);
+                        Win32.SetForegroundWindow(CommunicationData.Console.Handle);
                     } else
                     {
                         Win32.SetForegroundWindow(Data.CommunicationData.MainWindow.WindowHandle);

@@ -34,7 +34,7 @@ namespace ChronClient.Module
         public static void OnEnable()
         {
             // Nop Memory
-            Memory0.mem.NopMemory("Minecraft.Windows.exe", 0x1216D73, 8);
+            Memory0.mem.PatchMemory("Minecraft.Windows.exe", 0x1216D73, new byte[] { 0xC6, 0x83, 0x94, 0x1, 0x0, 0x0, 0x0, 0x90});
         }
 
         public static void OnDisable()
