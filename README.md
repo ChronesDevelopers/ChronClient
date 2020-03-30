@@ -7,8 +7,8 @@ This Minecraft Modification Utility allows you to cheat in Minecraft. It uses C#
 - Cool GUI
 - Cool Hacks
 
-Get it here
--> Here: https://github.com/ChronesDevelopers/ChronClient/releases
+Get it
+ Here: https://github.com/ChronesDevelopers/ChronClient/releases
 
 Join discord
--> Here: http://dicord.chrones.cc
+ Here: http://dicord.chrones.cc
