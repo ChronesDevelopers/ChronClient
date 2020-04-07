@@ -20,6 +20,7 @@ namespace ChronClient
         {
             Console.Title = @"ChronClient Console";
             cmr.EnableVirtualTerminalProcessing();
+            Console.SetBufferSize(Console.BufferWidth, 300);
             cmr.DisableQuickEdit();
             Process.Start("minecraft://");
             Memory0.mem = new Chrones.Cmr.MemoryManagement.Memory("Minecraft.Windows");
@@ -27,14 +28,22 @@ namespace ChronClient
             Console.WriteLine($@"{cmr.cf(255, 255, 255)}Thanks for using ChronClient :D");
             cmr.clogl(ConsoleData.ChronClientLogName, "Loading Application");
             StroringInformationSetup.FileSetup();
+            Thread.Sleep(100);
             Modules.ModuleManagment.OnLoad.Start();
             Threads.ThreadManagement.StartAllThreads();
             cmr.clogl(ConsoleData.ChronClientLogName, "Finished!");
             cmr.clogl("Tips and Tricks", $"{cmr.cr}Use {cmr.cf(173, 255, 243)}{cmr.cb(16, 26, 24)}Control+RightShift{cmr.cr} to open the Console when playing Minecraft {cmr.cf(252, 255, 94)}:D{cmr.cr}");
+            cmr.clogl("Tips and Tricks", $"{cmr.cr}Use {cmr.cf(173, 255, 243)}{cmr.cb(16, 26, 24)}P+MouseDown{cmr.cr} to enable AutoClicker {cmr.cf(252, 255, 94)}[Click]{cmr.cr}");
+
+            while (true)
+            {
+                Modules.ModuleCommandManagment.GetCommand();
+            }
         }
 
         public static void StartScreen()
         {
+            Console.Clear();
             cmr_font.SetConsoleFont("Consolas", 13, 27);
             cmr.CenterConsole();
             //cmr.MaximizeConsole();

@@ -28,7 +28,7 @@ namespace ChronClient.GUI.Controls.Forms
         {
             InitializeComponent();
 
-            ModuleList.Text = "Airjump\nNoFall\nTabGUI";
+            ModuleList.Text = "Speed\nAirjump\nNoKnockBack\nNoFall\nReach\nNoSwing\nHitbox\nAutoClick\nTabGUI\nListGUI";
 
             #region ColorRGBTimer
             ColorRGBTimer = new DispatcherTimer();
@@ -51,6 +51,7 @@ namespace ChronClient.GUI.Controls.Forms
             this.Border_Update_Color_9873.BorderBrush = colorbrush;
             this.TextBlock_Update_Color_8983.Foreground = colorbrush;
             this.ModuleList.Foreground = colorbrush;
+            this.Border_Update_Color_4567.BorderBrush = colorbrush;
         }
     }
 }

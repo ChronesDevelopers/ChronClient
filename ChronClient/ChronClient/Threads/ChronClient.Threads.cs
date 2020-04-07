@@ -1,4 +1,5 @@
 ﻿using ChronClient.Data;
+using ChronClient.Modules;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace ChronClient.Threads
             ColorRGBManagment.StartColorRGBCounter();
             CInputManagment.StartThread();
             OverlayManagment.StartOverlay();
+            ModuleManagment.Tick.Start();
         }
 
         public static class CInputManagment

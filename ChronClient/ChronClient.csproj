@@ -71,6 +71,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.Numerics" />
     <Reference Include="System.Windows" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -165,9 +166,19 @@
     <Compile Include="ChronClient\GUI\Page\Page\ChronClient.GUI.MainWindow.DashboardPage.WelcomePage.xaml.cs">
       <DependentUpon>ChronClient.GUI.MainWindow.DashboardPage.WelcomePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ChronClient\Modules\ChronClient.ModuleManagment.cs" />
+    <Compile Include="ChronClient\Modules\ChronClient.ModuleManagement.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Airjump.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.AutoClick.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.HighJump.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Hitbox.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.NoFall.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.NoKnockBack.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.NoSwing.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.ParticleTrace.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Reach.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Speed.cs" />
+    <Compile Include="ChronClient\Modules\ChronClient.ModuleCommandManagement.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Teleport.cs" />
     <Compile Include="ChronClient\Threads\ChronClient.Threads.cs" />
     <Compile Include="lib\cmr\Cmr.Input.cs" />
     <Compile Include="lib\cmr\Cmr.MemoryManagement.cs" />

@@ -12,11 +12,13 @@
                 <Border BorderThickness="0" Background="#7F000000" CornerRadius="10" Margin="0.5"/>
                 <Border x:Name="Border_Update_Color_9873" BorderThickness="2" CornerRadius="10" BorderBrush="White"/>
                 <Grid>
-                    <TextBlock x:Name="TextBlock_Update_Color_8983" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ChronClient" VerticalAlignment="Top" Margin="10,5" Foreground="White" FontFamily="Consolas" FontSize="28" FontWeight="Bold" FontStyle="Italic"/>
+                    <TextBlock x:Name="TextBlock_Update_Color_8983" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ChronClient" VerticalAlignment="Top" Margin="10,5" Foreground="White" FontFamily="Consolas" FontSize="24" FontWeight="Bold" FontStyle="Italic"/>
                 </Grid>
             </Grid>
             <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,20,20,0">
-                <TextBlock x:Name="ModuleList" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Airjump" VerticalAlignment="Top" Margin="0" Foreground="White" Background="#7F000000" FontFamily="Consolas" FontSize="22" TextAlignment="Right"/>
+                <Border BorderThickness="0" Background="#7F000000" CornerRadius="10" Margin="0.5"/>
+                <Border x:Name="Border_Update_Color_4567" BorderBrush="White" BorderThickness="2" CornerRadius="10"/>
+                <TextBlock x:Name="ModuleList" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Airjump" VerticalAlignment="Top" Margin="10,5" Foreground="White" FontFamily="Consolas" FontSize="18" TextAlignment="Right"/>
             </Grid>
         </Grid>
     </Grid>

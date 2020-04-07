@@ -246,6 +246,17 @@ namespace Chrones.Cmr.MemoryManagement
             return BitConverter.ToInt32(memory, 0);
         }
 
+        public float ReadFloat(Pointer pointer)
+        {
+            byte[] memory = new byte[4];
+
+            IntPtr ModuleBaseAddress = GetModuleBaseAddress(Proc, pointer.ModuleBase);
+            IntPtr TargetAddress = FindAddressWithPointer(hProc, (IntPtr)(ModuleBaseAddress + pointer.PointerAddress), pointer.Offsets);
+
+            ReadProcessMemory(this.hProc, TargetAddress, memory, (UIntPtr)4, IntPtr.Zero);
+            return BitConverter.ToSingle(memory, 0);
+        }
+
         public bool ReadBool(Pointer pointer)
         {
             byte[] memory = new byte[4];

@@ -39,6 +39,16 @@ namespace Chrones.Cmr
             Console.WriteLine($"{cf(120, 120, 120)}[{cf(200, 200, 200)}{name}{cf(120, 120, 120)}] {print}");
         }
 
+        public static void ccout(string name, string print)
+        {
+            Console.WriteLine($"{cf(120, 120, 120)}[{cf(255, 255, 255)}{name}{cf(120, 120, 120)}] {cf(255, 59, 59)}: {cf(255, 255, 255)}{print}");
+        }
+
+        public static void ccoutl(string name, string print)
+        {
+            Console.WriteLine($"{cf(120, 120, 120)}[{cf(255, 255, 255)}{name}{cf(120, 120, 120)}] {cf(255, 59, 59)}: {cf(255, 255, 255)}{print}");
+        }
+
         #region ConsoleText
 
         public static string cf(uint r, uint g, uint b)
@@ -218,9 +228,12 @@ namespace Chrones.Cmr
             Environment.Exit(0);
         }
 
-        public static void ExitApplication()
+        public static void ExitApplication(bool ExitDialog = true)
         {
-            Console.WriteLine($"{cr}\n{cf(255, 140, 46)}Exiting... \n");
+            if (ExitDialog)
+            {
+                Console.WriteLine($"{cr}\n{cf(255, 140, 46)}Exiting... \n");
+            }
             Environment.Exit(0);
         }
     }
