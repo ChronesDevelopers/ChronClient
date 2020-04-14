@@ -11,15 +11,35 @@
 
     <Grid>
         <ScrollViewer>
-            <StackPanel Height="5000">
-                <TextBlock Text="Settings!" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="29" FontFamily="Consolas" Margin="0,5"/>
-                <Image Width="500" Height="500" VerticalAlignment="Top" Source="/ChronClient;component/ChronClient/res/logo/png/ChronClient_Logo_Gray_BIG.png" Margin="0,100,0,0" />
-                <ModuleControl:C_Control_ModuleToggle d:LayoutOverrides="Height"/>
-                <ModuleControl:C_Control_ModuleToggle d:LayoutOverrides="Height"/>
-                <ModuleControl:C_Control_ModuleToggle d:LayoutOverrides="Height"/>
-                <ModuleControl:C_Control_ModuleToggle d:LayoutOverrides="Height"/>
-                <ModuleControl:C_Control_ModuleToggle d:LayoutOverrides="Height"/>
-                <ModuleControl:C_Control_ModuleToggle d:LayoutOverrides="Height"/>
+            <StackPanel Height="5000" x:Name="ListSettings">
+                <!--<TextBlock Text="Settings!" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="29" FontFamily="Consolas" Margin="0,5"/>
+                <Image Width="500" Height="500" VerticalAlignment="Top" Source="/ChronClient;component/ChronClient/res/logo/png/ChronClient_Logo_Gray_BIG.png" Margin="0,100,0,0" /> -->
+                <TextBlock Text="Settings" Foreground="White" FontSize="30" FontFamily="Consolas" FontWeight="Bold" Margin="15,10,15,0"/>
+                <ComboBox Width="200" Height="30" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="Black">
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Mineplex" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Hive" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lol" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                    <TextBlock Foreground="White" Background="#FF3C3C3C" Text="Lifeboat" Height="Auto" FontFamily="Consolas" FontSize="20"/>
+                </ComboBox>
             </StackPanel>
         </ScrollViewer>
     </Grid>

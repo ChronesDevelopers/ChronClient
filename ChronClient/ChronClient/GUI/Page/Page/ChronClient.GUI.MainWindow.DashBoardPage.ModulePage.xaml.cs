@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -18,31 +17,13 @@ using System.Windows.Shapes;
 namespace ChronClient.GUI
 {
     /// <summary>
-    /// Interaktionslogik für ChronClient.xaml
+    /// Interaction logic for ChronClient.xaml
     /// </summary>
-    public partial class MainWindow_DashboardPage : Page
+    public partial class MainWindow_DashboardPage_ModulePage : Page
     {
-        public bool NavigateWithAnimationBool = true;
-
-        public MainWindow_DashboardPage()
+        public MainWindow_DashboardPage_ModulePage()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            //Thread t1 = new Thread(Open100BrowserTabs);
-            //t1.Start();
-            Data.CommunicationData.MainWindow.WindowObject.NavigateWithAnimationBool = true;
-            this.NavigationService.Navigate(new MainWindow_WelcomePage());
-        }
-
-        private void Open100BrowserTabs()
-        {
-            for (int i = 0; i < 50; i++)
-            {
-                System.Diagnostics.Process.Start("https://www.youtube.com/channel/UCf37yIqWXfiXspKivc1X_Ow");
-            }
         }
 
         private void ContentShowerNavigationFrame_Navigated(object sender, NavigatingCancelEventArgs e)
@@ -56,11 +37,11 @@ namespace ChronClient.GUI
             ta.To = new Thickness(0, 0, 0, 0);
             if (e.NavigationMode == NavigationMode.New)
             {
-                ta.From = new Thickness(0, 300, 0, 0);
+                ta.From = new Thickness(0, 200, 0, 0);
             }
             else if (e.NavigationMode == NavigationMode.Back)
             {
-                ta.From = new Thickness(0, 0, 0, 300);
+                ta.From = new Thickness(0, 0, 0, 200);
             }
 
             var ta2 = new DoubleAnimation();
@@ -70,25 +51,38 @@ namespace ChronClient.GUI
             EasingFunction2.EasingMode = EasingMode.EaseOut;
             ta.EasingFunction = EasingFunction2;
             //(e.Content as Page).BeginAnimation(MarginProperty, ta);
+            ContentShowerNavigationFrame.BeginAnimation(MarginProperty, ta);
             ContentShowerNavigationFrame.BeginAnimation(OpacityProperty, ta2);
-
-            if (NavigateWithAnimationBool)
-            {
-                ContentShowerNavigationFrame.BeginAnimation(MarginProperty, ta);
-            }
-
-            NavigateWithAnimationBool = true;
+        }
+    
+        private void NavigateToMovement(object sender, EventArgs e)
+        {
+            ContentShowerNavigationFrame.Navigate(new ModulePages.ModulePage_MovementPage());
         }
 
-        private void SettingsButton_Click(object sender, RoutedEventArgs e)
+        private void NavigateToCombat(object sender, EventArgs e)
         {
-            ContentShowerNavigationFrame.Navigate(new MainWindow_DashboardPage_SettingsPage());
+            ContentShowerNavigationFrame.Navigate(new ModulePages.ModulePage_CombatPage());
         }
 
-        private void ModuleButton_Click(object sender, RoutedEventArgs e)
+        private void NavigateToPlayer(object sender, EventArgs e)
         {
-            NavigateWithAnimationBool = false;
-            ContentShowerNavigationFrame.Navigate(new MainWindow_DashboardPage_ModulePage());
+            ContentShowerNavigationFrame.Navigate(new ModulePages.ModulePage_PlayerPage());
+        }
+
+        private void NavigateToWorld(object sender, EventArgs e)
+        {
+            ContentShowerNavigationFrame.Navigate(new ModulePages.ModulePage_WorldPage());
+        }
+
+        private void NavigateToTeleport(object sender, EventArgs e)
+        {
+            ContentShowerNavigationFrame.Navigate(new ModulePages.ModulePage_TeleportPage());
+        }
+
+        private void NavigateToOther(object sender, EventArgs e)
+        {
+            ContentShowerNavigationFrame.Navigate(new ModulePages.ModulePage_OtherPage());
         }
     }
 }

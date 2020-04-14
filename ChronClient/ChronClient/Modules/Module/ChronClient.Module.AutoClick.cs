@@ -15,7 +15,36 @@ namespace ChronClient.Module
 {
     public static class AutoClick
     {
+        public static Modules.ModuleType ModuleType = new Modules.ModuleType("AutoClick", "Combat", true, ref _ToggleState, new Action(OnEnable), new Action(OnDisable), null, null, null, null, null, new Action(Toggle));
+
+        public static void OnEnable()
+        {
+            ToggleState = true;
+        }
+
+        public static void OnDisable()
+        {
+            ToggleState = false;
+        }
+
+        public static void OnLoad()
+        {
+            Modules.ModuleManagment.ValueRegister.RegisterModule(ModuleType);
+            Start();
+        }
+
         public static Thread thread;
+
+        public static bool _ToggleState = false;
+
+        public static bool ToggleState
+        {
+            get { return _ToggleState; }
+            set
+            {
+                _ToggleState = value;
+            }
+        }
 
         public static void ThreadLoop()
         {
@@ -53,41 +82,46 @@ namespace ChronClient.Module
             Win32.INPUT[] inputsUPR = new Win32.INPUT[] { inputMouseUpR };
             Win32.INPUT[] inputsDOWNR = new Win32.INPUT[] { inputMouseDownR };
 
-            bool LastClicked = false;
-
             while (true)
             {
-                IntPtr ForegroundWindowHandle = Win32.GetForegroundWindow();
+                /*try
+                {*/
+                    IntPtr ForegroundWindowHandle = Win32.GetForegroundWindow();
 
-                int x = Cursor.Position.X;
-                int y = Cursor.Position.Y;
+                    int x = Cursor.Position.X;
+                    int y = Cursor.Position.Y;
 
-                if (cmr_input.GetKeyStateDown(Win32.VirtualKeys.LeftButton) && cmr_input.GetKeyStateDown(Win32.VirtualKeys.P))
-                {
-                    if (CommunicationData.Overlay.TargetWindowHandle == ForegroundWindowHandle)
+                    if (ToggleState)
                     {
-                        /*//Win32.mouse_event(Win32.MouseEventFlags.LEFTDOWN, 0, 0, 0, 0);
-                        Win32.SendInput(1, inputsDOWNL, Marshal.SizeOf(typeof(Win32.INPUT)));
-                        Thread.Sleep(5);
-                        //Win32.mouse_event(Win32.MouseEventFlags.LEFTUP, 0, 0, 0, 0);
-                        Win32.SendInput(1, inputsUPL, Marshal.SizeOf(typeof(Win32.INPUT)));
-                        Thread.Sleep(5);*/
-                        Win32.mouse_event((uint)Win32.MouseEventFlags.LEFTUP, 0, 0, 0, 0);
-                        Thread.Sleep(5);
-                        Win32.mouse_event((uint)Win32.MouseEventFlags.LEFTDOWN, 0, 0, 0, 0);
-                        Thread.Sleep(5);
-                        LastClicked = true;
+
+                        if (cmr_input.GetKeyStateDown(Win32.VirtualKeys.P) && ForegroundWindowHandle == CommunicationData.Overlay.TargetWindowHandle)
+                        {
+                            while (true)
+                            {
+                                Win32.mouse_event((uint)Win32.MouseEventFlags.LEFTDOWN, 0, 0, 0, 0);
+                                Thread.Sleep(5);
+                                Win32.mouse_event((uint)Win32.MouseEventFlags.LEFTUP, 0, 0, 0, 0);
+                                Thread.Sleep(5);
+
+                                if (cmr_input.GetKeyStateUp(Win32.VirtualKeys.P))
+                                {
+                                    break;
+                                }
+
+                                ForegroundWindowHandle = Win32.GetForegroundWindow();
+
+                                if (ForegroundWindowHandle == CommunicationData.Overlay.TargetWindowHandle)
+                                {
+                                    break;
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Thread.Sleep(10);
+                        }
                     }
-                    else
-                    {
-                        LastClicked = false;
-                        Thread.Sleep(10);
-                    }
-                }
-                else
-                {
-                    Thread.Sleep(10);
-                }
+                //} catch { }
             }
         }
 
@@ -95,6 +129,11 @@ namespace ChronClient.Module
         {
             thread = new Thread(new ThreadStart(ThreadLoop));
             thread.Start();
+        }
+
+        public static void Toggle()
+        {
+            _ToggleState = !_ToggleState;
         }
     }
 }

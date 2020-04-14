@@ -8,7 +8,14 @@ namespace ChronClient.Module
 {
     public static class NoKnockBack
     {
-        private static bool _ToggleState = false;
+        public static Modules.ModuleType ModuleType = new Modules.ModuleType("NoKnockBack", "Player", true, ref _ToggleState, new Action(OnEnable), new Action(OnDisable), null, null, null, null, new Action(Refresh), new Action(Toggle));
+
+        public static void OnLoad()
+        {
+            Modules.ModuleManagment.ValueRegister.RegisterModule(ModuleType);
+        }
+
+        public static bool _ToggleState = false;
 
         public static bool ToggleState
         {
@@ -50,6 +57,23 @@ namespace ChronClient.Module
             Memory0.mem.PatchMemory("Minecraft.Windows.exe", 0x121A8DB, new byte[] { 0x89, 0x81, 0x70, 0x04, 0x00, 0x00 });
             // Z
             Memory0.mem.PatchMemory("Minecraft.Windows.exe", 0x121A8E4, new byte[] { 0x89, 0x81, 0x74, 0x04, 0x00, 0x00 });
+        }
+
+        public static void Toggle()
+        {
+            _ToggleState = !_ToggleState;
+        }
+
+        public static void Refresh()
+        {
+            if (ToggleState)
+            {
+                OnEnable();
+            }
+            else if (!ToggleState)
+            {
+                OnDisable();
+            }
         }
     }
 }

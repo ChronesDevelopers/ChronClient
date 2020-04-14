@@ -8,7 +8,14 @@ namespace ChronClient.Module
 {
     public static class NoFall
     {
-        private static bool _ToggleState = false;
+        public static Modules.ModuleType ModuleType = new Modules.ModuleType("NoFall", "Player", true, ref _ToggleState, new Action(OnEnable), new Action(OnDisable), null, null, null, null, new Action(Refresh), new Action(Toggle));
+
+        public static void OnLoad()
+        {
+            Modules.ModuleManagment.ValueRegister.RegisterModule(ModuleType);
+        }
+
+        public static bool _ToggleState = false;
 
         public static bool ToggleState
         {
@@ -41,6 +48,23 @@ namespace ChronClient.Module
         {
             // Restore Memory
             Memory0.mem.PatchMemory("Minecraft.Windows.exe", 0x1216D73, new byte[] { 0xF3, 0x0F, 0x11, 0x83, 0x94, 0x01, 0x0, 0x0 });
+        }
+
+        public static void Toggle()
+        {
+            _ToggleState = !_ToggleState;
+        }
+
+        public static void Refresh()
+        {
+            if (ToggleState)
+            {
+                OnEnable();
+            }
+            else if (!ToggleState)
+            {
+                OnDisable();
+            }
         }
     }
 }

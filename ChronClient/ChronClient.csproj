@@ -109,6 +109,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ChronClient\GUI\Controls\Styles\ChronClient.GUI.Controls.Styles.C_ComboBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChronClient\GUI\Controls\UserControls\ModuleControl\C_Control_C_Control_ModuleToggle.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -131,6 +135,27 @@
     </Compile>
     <Compile Include="ChronClient\GUI\Controls\UserControls\ModuleControl\C_Control_C_Control_ModuleToggle.xaml.cs">
       <DependentUpon>C_Control_C_Control_ModuleToggle.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\Page\Page\ChronClient.GUI.MainWindow.DashBoardPage.ModulePage.xaml.cs">
+      <DependentUpon>ChronClient.GUI.MainWindow.DashBoardPage.ModulePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.Player.xaml.cs">
+      <DependentUpon>ChronClient.ModulePages.Player.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.World.xaml.cs">
+      <DependentUpon>ChronClient.ModulePages.World.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.Teleport.xaml.cs">
+      <DependentUpon>ChronClient.ModulePages.Teleport.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.Other.xaml.cs">
+      <DependentUpon>ChronClient.ModulePages.Other.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.Combat.xaml.cs">
+      <DependentUpon>ChronClient.ModulePages.Combat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.Movement.xaml.cs">
+      <DependentUpon>ChronClient.ModulePages.Movement.xaml</DependentUpon>
     </Compile>
     <Compile Include="ChronClient\Input\ChronClient.Input.cs" />
     <Compile Include="ChronClient\Memory\ChronClient.Memory0.cs" />
@@ -169,11 +194,15 @@
     <Compile Include="ChronClient\Modules\ChronClient.ModuleManagement.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Airjump.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.AutoClick.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.CustomTime.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Fullbright.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.HighJump.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Hitbox.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Instabreak.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.NoFall.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.NoKnockBack.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.NoSwing.cs" />
+    <Compile Include="ChronClient\Modules\Module\ChronClient.Module.NoWater.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.ParticleTrace.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Reach.cs" />
     <Compile Include="ChronClient\Modules\Module\ChronClient.Module.Speed.cs" />
@@ -202,11 +231,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="ChronClient\GUI\Page\Page\ChronClient.GUI.MainWindow.DashBoardPage.ModulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ChronClient\GUI\Page\Page\ChronClient.GUI.MainWindow.DashboardPage.SettingsPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
     <Page Include="ChronClient\GUI\Page\Page\ChronClient.GUI.MainWindow.DashboardPage.WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.Player.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.World.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.Teleport.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.Other.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.Combat.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ChronClient\GUI\Page\Page\ModulePages\ChronClient.ModulePages.Movement.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

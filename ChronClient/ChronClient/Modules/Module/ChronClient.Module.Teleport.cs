@@ -19,20 +19,20 @@ namespace ChronClient.Module
 
         public static void SetPosition(float X, float Y, float Z)
         {
-            Memory0.mem.WriteMemory(X1_Position, X);
+            Memory0.mem.WriteMemory(X1_Position, X - 0.3f);
             Memory0.mem.WriteMemory(Y1_Position, X);
-            Memory0.mem.WriteMemory(Z1_Position, X);
-            Memory0.mem.WriteMemory(X2_Position, X + 0.6f);
+            Memory0.mem.WriteMemory(Z1_Position, X - 0.3f);
+            Memory0.mem.WriteMemory(X2_Position, X + 0.3f);
             Memory0.mem.WriteMemory(Y2_Position, X + 1.8f);
-            Memory0.mem.WriteMemory(Z2_Position, X + 0.6f);
+            Memory0.mem.WriteMemory(Z2_Position, X + 0.3f);
         }
 
         public static void SetPosition(float X, float Y, float Z, bool SetX, bool SetY, bool SetZ)
         {
             if (SetX)
             {
-                Memory0.mem.WriteMemory(X1_Position, X);
-                Memory0.mem.WriteMemory(X2_Position, X + 0.6f);
+                Memory0.mem.WriteMemory(X1_Position, X - 0.3f);
+                Memory0.mem.WriteMemory(X2_Position, X + 0.3f);
             }
 
             if (SetY)
@@ -43,8 +43,8 @@ namespace ChronClient.Module
 
             if (SetZ)
             {
-                Memory0.mem.WriteMemory(Z1_Position, X);
-                Memory0.mem.WriteMemory(Z2_Position, X + 0.6f);
+                Memory0.mem.WriteMemory(Z1_Position, X - 0.3f);
+                Memory0.mem.WriteMemory(Z2_Position, X + 0.3f);
             }
         }
 
@@ -52,8 +52,8 @@ namespace ChronClient.Module
         {
             if (SetX)
             {
-                Memory0.mem.WriteMemory(X1_Position, Position.X);
-                Memory0.mem.WriteMemory(X2_Position, Position.X + 0.6f);
+                Memory0.mem.WriteMemory(X1_Position, Position.X - 0.3f);
+                Memory0.mem.WriteMemory(X2_Position, Position.X + 0.3f);
             }
 
             if (SetY)
@@ -64,27 +64,27 @@ namespace ChronClient.Module
 
             if (SetZ)
             {
-                Memory0.mem.WriteMemory(Z1_Position, Position.Z);
-                Memory0.mem.WriteMemory(Z2_Position, Position.Z + 0.6f);
+                Memory0.mem.WriteMemory(Z1_Position, Position.Z - 0.3f);
+                Memory0.mem.WriteMemory(Z2_Position, Position.Z + 0.3f);
             }
         }
 
         public static void SetPosition(Vector3 Position)
         {
-            Memory0.mem.WriteMemory(X1_Position, Position.X);
+            Memory0.mem.WriteMemory(X1_Position, Position.X - 0.3f);
             Memory0.mem.WriteMemory(Y1_Position, Position.Y);
-            Memory0.mem.WriteMemory(Z1_Position, Position.Z);
-            Memory0.mem.WriteMemory(X2_Position, Position.X + 0.6f);
+            Memory0.mem.WriteMemory(Z1_Position, Position.Z - 0.3f);
+            Memory0.mem.WriteMemory(X2_Position, Position.X + 0.3f);
             Memory0.mem.WriteMemory(Y2_Position, Position.Y + 1.8f);
-            Memory0.mem.WriteMemory(Z2_Position, Position.Z + 0.6f);
+            Memory0.mem.WriteMemory(Z2_Position, Position.Z + 0.3f);
         }
 
         public static Vector3 GetPosition()
         {
             Vector3 Position;
-            Position.X = Memory0.mem.ReadFloat(X1_Position);
+            Position.X = Memory0.mem.ReadFloat(X1_Position) + 0.3f;
             Position.Y = Memory0.mem.ReadFloat(Y1_Position);
-            Position.Z = Memory0.mem.ReadFloat(Z1_Position);
+            Position.Z = Memory0.mem.ReadFloat(Z1_Position) + 0.3f;
 
             return Position;
         }

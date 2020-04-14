@@ -17,6 +17,7 @@ namespace ChronClient.Threads
             CInputManagment.StartThread();
             OverlayManagment.StartOverlay();
             ModuleManagment.Tick.Start();
+            MemoryConnecting.StartMemoryConnectingLoop();
         }
 
         public static class CInputManagment
@@ -113,6 +114,27 @@ namespace ChronClient.Threads
                         Data.CommunicationData.GUI.ColorRGBCounter = 0;
                     }
                     Thread.Sleep(10);
+                }
+            }
+        }
+
+        public static class MemoryConnecting
+        {
+            public static Thread MemoryConnectingThread;
+
+            public static void StartMemoryConnectingLoop()
+            {
+                MemoryConnectingThread = new Thread(new ThreadStart(ReconnectMemoryLoop));
+                MemoryConnectingThread.Priority = ThreadPriority.Lowest;
+                MemoryConnectingThread.Start();
+            }
+
+            private static void ReconnectMemoryLoop()
+            {
+                while (true)
+                {
+                    Memory0.mem.ConnectToProcess();
+                    Thread.Sleep(600);
                 }
             }
         }

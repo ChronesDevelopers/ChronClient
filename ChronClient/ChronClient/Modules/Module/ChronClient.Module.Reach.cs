@@ -8,7 +8,14 @@ namespace ChronClient.Module
 {
     public static class Reach
     {
-        private static bool _ToggleState = false;
+        public static Modules.ModuleType ModuleType = new Modules.ModuleType("Reach", "Combat", true, ref _ToggleState, new Action(OnEnable), new Action(OnDisable), null, null, null, null, new Action(Refresh), new Action(Toggle));
+
+        public static void OnLoad()
+        {
+            Modules.ModuleManagment.ValueRegister.RegisterModule(ModuleType);
+        }
+
+        public static bool _ToggleState = false;
 
         public static bool ToggleState
         {
@@ -41,6 +48,23 @@ namespace ChronClient.Module
         {
             // Restore Memory
             Memory0.mem.PatchMemory("Minecraft.Windows.exe", 0x5D58C6, new byte[] { 0xF3, 0x0F, 0x10, 0x05, 0xFA, 0xB5, 0xAA, 0x01 });
+        }
+
+        public static void Toggle()
+        {
+            _ToggleState = !_ToggleState;
+        }
+
+        public static void Refresh()
+        {
+            if (ToggleState)
+            {
+                OnEnable();
+            }
+            else if (!ToggleState)
+            {
+                OnDisable();
+            }
         }
     }
 }

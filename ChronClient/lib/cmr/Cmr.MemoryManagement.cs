@@ -159,16 +159,25 @@ namespace Chrones.Cmr.MemoryManagement
 
         public void ConnectToProcess()
         {
-            this.Proc = Process.GetProcessesByName(this.ProcessName)[0];
-            this.hProc = OpenProcess(ProcessAccessFlags.All, false, Proc.Id);
+            try
+            {
+                this.Proc = Process.GetProcessesByName(this.ProcessName)[0];
+                this.hProc = OpenProcess(ProcessAccessFlags.All, false, Proc.Id);
+            } catch { }
         }
 
         #region Write
         public void WriteMemory(Pointer pointer, object value)
         {
-            IntPtr ModuleBaseAddress = GetModuleBaseAddress(this.Proc, pointer.ModuleBase);
-            IntPtr TargetAddress = FindAddressWithPointer(this.hProc, (IntPtr)(ModuleBaseAddress + pointer.PointerAddress), pointer.Offsets);
-            WriteProcessMemory(this.hProc, TargetAddress, value, 4, out _);
+            try
+            {
+                IntPtr ModuleBaseAddress = GetModuleBaseAddress(this.Proc, pointer.ModuleBase);
+                IntPtr TargetAddress = FindAddressWithPointer(this.hProc, (IntPtr)(ModuleBaseAddress + pointer.PointerAddress), pointer.Offsets);
+                WriteProcessMemory(this.hProc, TargetAddress, value, 4, out _);
+            } catch
+            {
+
+            }
         }
 
         public void WriteMemory(int address, object value)
@@ -183,21 +192,27 @@ namespace Chrones.Cmr.MemoryManagement
 
         public void PatchMemory(string ModuleBase, int Address, byte[] write)
         {
-            IntPtr ModuleBaseAddress = GetModuleBaseAddress(Proc, ModuleBase);
-            uint oldprotect;
+            try
+            {
+                IntPtr ModuleBaseAddress = GetModuleBaseAddress(Proc, ModuleBase);
+                uint oldprotect;
 
-            VirtualProtectEx(this.hProc, (IntPtr)(ModuleBaseAddress + Address), (UIntPtr)write.Length, 0x40, out oldprotect);
-            WriteProcessMemory(this.hProc, ModuleBaseAddress + Address, write, write.Length, out _);
-            VirtualProtectEx(this.hProc, (IntPtr)(ModuleBaseAddress + Address), (UIntPtr)write.Length, oldprotect, out oldprotect);
+                VirtualProtectEx(this.hProc, (IntPtr)(ModuleBaseAddress + Address), (UIntPtr)write.Length, 0x40, out oldprotect);
+                WriteProcessMemory(this.hProc, ModuleBaseAddress + Address, write, write.Length, out _);
+                VirtualProtectEx(this.hProc, (IntPtr)(ModuleBaseAddress + Address), (UIntPtr)write.Length, oldprotect, out oldprotect);
+            } catch { }
         }
 
         public void PatchMemory(int Address, byte[] write)
         {
-            uint oldprotect;
+            try
+            {
+                uint oldprotect;
 
-            VirtualProtectEx(this.hProc, (IntPtr)(Address), (UIntPtr)write.Length, 0x40, out oldprotect);
-            WriteProcessMemory(this.hProc, (IntPtr)Address, write, write.Length, IntPtr.Zero);
-            VirtualProtectEx(this.hProc, (IntPtr)(Address), (UIntPtr)write.Length, oldprotect, out oldprotect);
+                VirtualProtectEx(this.hProc, (IntPtr)(Address), (UIntPtr)write.Length, 0x40, out oldprotect);
+                WriteProcessMemory(this.hProc, (IntPtr)Address, write, write.Length, IntPtr.Zero);
+                VirtualProtectEx(this.hProc, (IntPtr)(Address), (UIntPtr)write.Length, oldprotect, out oldprotect);
+            } catch { }
         }
 
         public void NopMemory(string ModuleBase, int Address, int length)
@@ -226,46 +241,61 @@ namespace Chrones.Cmr.MemoryManagement
         #region Read
         public byte[] ReadMemory(Pointer pointer, long length)
         {
-            byte[] memory = new byte[length];
+            try
+            {
+                byte[] memory = new byte[length];
 
-            IntPtr ModuleBaseAddress = GetModuleBaseAddress(Proc, pointer.ModuleBase);
-            IntPtr TargetAddress = FindAddressWithPointer(hProc, (IntPtr)(ModuleBaseAddress + pointer.PointerAddress), pointer.Offsets);
-            
-            ReadProcessMemory(this.hProc, TargetAddress, memory, (UIntPtr)length, IntPtr.Zero);
-            return memory;
+                IntPtr ModuleBaseAddress = GetModuleBaseAddress(Proc, pointer.ModuleBase);
+                IntPtr TargetAddress = FindAddressWithPointer(hProc, (IntPtr)(ModuleBaseAddress + pointer.PointerAddress), pointer.Offsets);
+
+                ReadProcessMemory(this.hProc, TargetAddress, memory, (UIntPtr)length, IntPtr.Zero);
+                return memory;
+            } catch(Exception e) { throw e; }
         }
 
         public int ReadInt(Pointer pointer)
         {
-            byte[] memory = new byte[4];
+            try
+            {
+                byte[] memory = new byte[4];
 
-            IntPtr ModuleBaseAddress = GetModuleBaseAddress(Proc, pointer.ModuleBase);
-            IntPtr TargetAddress = FindAddressWithPointer(hProc, (IntPtr)(ModuleBaseAddress + pointer.PointerAddress), pointer.Offsets);
+                IntPtr ModuleBaseAddress = GetModuleBaseAddress(Proc, pointer.ModuleBase);
+                IntPtr TargetAddress = FindAddressWithPointer(hProc, (IntPtr)(ModuleBaseAddress + pointer.PointerAddress), pointer.Offsets);
 
-            ReadProcessMemory(this.hProc, TargetAddress, memory, (UIntPtr)4, IntPtr.Zero);
-            return BitConverter.ToInt32(memory, 0);
+                ReadProcessMemory(this.hProc, TargetAddress, memory, (UIntPtr)4, IntPtr.Zero);
+                return BitConverter.ToInt32(memory, 0);
+            }
+            catch (Exception e) { throw e; }
         }
 
         public float ReadFloat(Pointer pointer)
         {
-            byte[] memory = new byte[4];
+            try
+            {
+                byte[] memory = new byte[4];
 
-            IntPtr ModuleBaseAddress = GetModuleBaseAddress(Proc, pointer.ModuleBase);
-            IntPtr TargetAddress = FindAddressWithPointer(hProc, (IntPtr)(ModuleBaseAddress + pointer.PointerAddress), pointer.Offsets);
+                IntPtr ModuleBaseAddress = GetModuleBaseAddress(Proc, pointer.ModuleBase);
+                IntPtr TargetAddress = FindAddressWithPointer(hProc, (IntPtr)(ModuleBaseAddress + pointer.PointerAddress), pointer.Offsets);
 
-            ReadProcessMemory(this.hProc, TargetAddress, memory, (UIntPtr)4, IntPtr.Zero);
-            return BitConverter.ToSingle(memory, 0);
+                ReadProcessMemory(this.hProc, TargetAddress, memory, (UIntPtr)4, IntPtr.Zero);
+                return BitConverter.ToSingle(memory, 0);
+            }
+            catch (Exception e) { throw e; }
         }
 
         public bool ReadBool(Pointer pointer)
         {
-            byte[] memory = new byte[4];
+            try
+            {
+                byte[] memory = new byte[4];
 
-            IntPtr ModuleBaseAddress = GetModuleBaseAddress(Proc, pointer.ModuleBase);
-            IntPtr TargetAddress = FindAddressWithPointer(hProc, (IntPtr)(ModuleBaseAddress + pointer.PointerAddress), pointer.Offsets);
+                IntPtr ModuleBaseAddress = GetModuleBaseAddress(Proc, pointer.ModuleBase);
+                IntPtr TargetAddress = FindAddressWithPointer(hProc, (IntPtr)(ModuleBaseAddress + pointer.PointerAddress), pointer.Offsets);
 
-            ReadProcessMemory(this.hProc, TargetAddress, memory, (UIntPtr)4, IntPtr.Zero);
-            return BitConverter.ToBoolean(memory, 0);
+                ReadProcessMemory(this.hProc, TargetAddress, memory, (UIntPtr)4, IntPtr.Zero);
+                return BitConverter.ToBoolean(memory, 0);
+            }
+            catch (Exception e) { throw e; }
         }
         #endregion
 

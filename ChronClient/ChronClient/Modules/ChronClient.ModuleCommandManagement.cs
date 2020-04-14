@@ -118,6 +118,65 @@ namespace ChronClient.Modules
                 Console.WriteLine($"{cmr.cb(30, 32, 36)}{cmr.cf(112, 119, 255)}X: {cmr.cf(166, 184, 255)}{Position.X} {cmr.cf(112, 119, 255)}Y: {cmr.cf(166, 184, 255)}{Position.Y} {cmr.cf(112, 119, 255)}Z: {cmr.cf(166, 184, 255)}{Position.Z}{cmr.cr}");
             }
 
+            if (command == "ctime.value" || command == "customtime.value" || command == "ctime set" || command == "customtime set" || command == "set ctime" || command == "set customtime")
+            {
+                cmr.ccout("Module_CustomTime", "What time do you want to set? You can use the Keywords or Numbers.");
+                Console.Write($"{cmr.cf(173, 255, 243)}{cmr.cb(16, 26, 24)}Enter the value here:{cmr.cr} {cmr.cf(255, 255, 255)}");
+                string input = Console.ReadLine();
+                int value;
+
+                if (!cmr.IsNumberOnly(input))
+                {
+                    if (input == "night")
+                    {
+
+                    }
+                    else if (input == "day")
+                    {
+
+                    }
+                    else
+                    {
+                        Console.WriteLine($"{cmr.cf(255, 30, 30)}There was an error!{cmr.cr}");
+                    }
+                }
+                else
+                {
+                    try
+                    {
+                        value = Convert.ToInt32(input);
+                        Module.CustomTime.Value = value;
+                        Module.CustomTime.Refresh();
+                        Console.Write($"{cmr.cr}");
+                        cmr.clogl("Module_CustomTime", $"CustomTime set to {value}{cmr.cr}");
+                    }
+                    catch
+                    {
+                        Console.Write($"{cmr.cr}");
+                        Console.WriteLine($"{cmr.cf(255, 30, 30)}There was an error!{cmr.cr}");
+                    }
+                }
+            }
+
+            if (command == "fullbright.value" || command == "fullbright.v")
+            {
+                Console.Write($"{cmr.cf(173, 255, 243)}{cmr.cb(16, 26, 24)}Enter the value here:{cmr.cr} {cmr.cf(255, 255, 255)}");
+                float value;
+                try
+                {
+                    value = Convert.ToSingle(Console.ReadLine());
+                    Module.Fullbright.Value = value;
+                    Module.Fullbright.Refresh();
+                    Console.Write($"{cmr.cr}");
+                    cmr.clogl("Module_Fullbright", $"Speedvalue set to {value}{cmr.cr}");
+                }
+                catch
+                {
+                    Console.Write($"{cmr.cr}");
+                    Console.WriteLine($"{cmr.cf(255, 30, 30)}There was an error!{cmr.cr}");
+                }
+            }
+
 #endregion
 
             return false;

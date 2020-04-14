@@ -1,18 +1,19 @@
-﻿using Chrones.Cmr.MemoryManagement;
-using System;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ChronClient.Module
 {
-    public static class Airjump
+    public static class Instabreak
     {
-        public static Modules.ModuleType ModuleType = new Modules.ModuleType("Airjump", "Movement", true, ref _ToggleState, new Action(OnEnable), new Action(OnDisable), null, null, null, null, new Action(Refresh), new Action(Toggle));
+        public static Modules.ModuleType ModuleType = new Modules.ModuleType("Instabreak", "Player", true, ref _ToggleState, new Action(OnEnable), new Action(OnDisable), null, null, null, null, new Action(Refresh), new Action(Toggle));
 
         public static void OnLoad()
         {
             Modules.ModuleManagment.ValueRegister.RegisterModule(ModuleType);
         }
-
-        //static Pointer OnGround = new Pointer("Minecraft.Windows.exe", 0x3022668, new int[] { 0x30, 0x28, 0x8, 0x1F8, 0x1F0, 0x0, 0xF0, 0x178 });
 
         public static bool _ToggleState = false;
 
@@ -40,13 +41,13 @@ namespace ChronClient.Module
         public static void OnEnable()
         {
             // Nop Memory
-            Memory0.mem.PatchMemory("Minecraft.Windows.exe", 0x121090E, new byte[] { 0xC6, 0x87, 0x78, 0x1, 0x0, 0x0, 0x1 });
+            Memory0.mem.PatchMemory("Minecraft.Windows.exe", 0x14A6120, new byte[] { 0xC7, 0x47, 0x20, 0x00, 0x00, 0x80, 0x3F, 0x90, 0x90, 0x90 });
         }
 
         public static void OnDisable()
         {
             // Restore Memory
-            Memory0.mem.PatchMemory("Minecraft.Windows.exe", 0x121090E, new byte[] { 0x44, 0x88, 0x87, 0x78, 0x01, 0x00, 0x00 });
+            Memory0.mem.PatchMemory("Minecraft.Windows.exe", 0x14A6120, new byte[] { 0xF3, 0x0F, 0x11, 0x4F, 0x20, 0xF3, 0x0F, 0x58, 0x4F, 0x20 });
         }
 
         public static void Toggle()

@@ -12,10 +12,10 @@
                 <ColumnDefinition/>
                 <ColumnDefinition Width="350"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="Toggle_Button" Content="{Binding ModuleName}" Grid.Column="1" Style="{StaticResource C_Button}" Margin="0,8,8,8"/>
+            <Button x:Name="Toggle_Button" Content="" Grid.Column="1" Style="{StaticResource C_Button}" Margin="0,8,8,8" Click="Toggle_Button_Click"/>
             <Border Grid.ColumnSpan="2" BorderBrush="#FF3C3C3C" BorderThickness="3" CornerRadius="20"/>
             <Grid Margin="20,5,10,5">
-                <TextBlock x:Name="ModuleName_TextBlock" TextWrapping="Wrap" Text="DefaultModuleName" VerticalAlignment="Center" Foreground="White" Margin="0" FontSize="22" FontFamily="Consolas" FontWeight="Bold"/>
+                <TextBlock x:Name="ModuleName_TextBlock" TextWrapping="Wrap" Text="{Binding Path=ModuleName}" VerticalAlignment="Center" Foreground="White" Margin="0" FontSize="22" FontFamily="Consolas" FontWeight="Bold"/>
             </Grid>
         </Grid>
     </Grid>

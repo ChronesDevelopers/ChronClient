@@ -9,11 +9,28 @@ namespace ChronClient.Module
 {
     public static class ParticleTrace
     {
+        public static Modules.ModuleType ModuleType = new Modules.ModuleType("ParticleTrace", "World", true, ref _ToggleState, new Action(OnEnable), new Action(OnDisable), null, null, new Action(Tick100), null, null, new Action(Toggle));
+
+        public static void OnEnable()
+        {
+            ToggleState = true;
+        }
+
+        public static void OnDisable()
+        {
+            ToggleState = false;
+        }
+
+        public static void OnLoad()
+        {
+            Modules.ModuleManagment.ValueRegister.RegisterModule(ModuleType);
+        }
+
         static Pointer ParticleTracePointer = new Pointer("Minecraft.Windows.exe", 0x3036708, new int[] { 0x20, 0x08, 0x18, 0x58, 0x78, 0x420, 0x78, 0x194 });
 
         private static float _Value = 5f;
 
-        private static bool _ToggleState = false;
+        public static bool _ToggleState = false;
 
         public static bool ToggleState
         {
@@ -39,6 +56,11 @@ namespace ChronClient.Module
             {
                 Memory0.mem.WriteMemory(ParticleTracePointer, _Value);
             }
+        }
+
+        public static void Toggle()
+        {
+            _ToggleState = !_ToggleState;
         }
     }
 }

@@ -28,7 +28,19 @@ namespace ChronClient.GUI.Controls.Forms
         {
             InitializeComponent();
 
-            ModuleList.Text = "Speed\nAirjump\nNoKnockBack\nNoFall\nReach\nNoSwing\nHitbox\nAutoClick\nTabGUI\nListGUI";
+            ModuleList.Text = Modules.ModuleManagment.ModuleGUI.GetFullModuleString();
+            if (ModuleList.Text.Length > 0)
+            {
+                if (ModuleList.Text[ModuleList.Text.Length - 1] == '\n')
+                {
+                    string ret = "";
+                    for (int i = 0; i < (ModuleList.Text.Length - 1); i++)
+                    {
+                        ret += ModuleList.Text[i];
+                    }
+                    ModuleList.Text = ret;
+                }
+            }
 
             #region ColorRGBTimer
             ColorRGBTimer = new DispatcherTimer();
@@ -40,6 +52,20 @@ namespace ChronClient.GUI.Controls.Forms
 
         private void ColorRGBTimer_Tick(object sender, EventArgs e)
         {
+            ModuleList.Text = Modules.ModuleManagment.ModuleGUI.GetFullModuleString();
+            if (ModuleList.Text.Length > 0) 
+            {
+                if (ModuleList.Text[ModuleList.Text.Length - 1] == '\n')
+                {
+                    string ret = "";
+                    for (int i = 0; i < (ModuleList.Text.Length - 1); i++)
+                    {
+                        ret += ModuleList.Text[i];
+                    }
+                    ModuleList.Text = ret;
+                } 
+            }
+
             Color color = cmr_color.WindowsCounterToColor(Data.CommunicationData.GUI.ColorRGBCounter);
             SolidColorBrush colorbrush = new SolidColorBrush(color);
 

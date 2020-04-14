@@ -13,6 +13,6 @@ namespace ChronClient.Data
 
     public static class GUI_Data
     {
-        public static double ColorRGBCounterSpeed = 1;
+        public static double ColorRGBCounterSpeed = 6;
     }
 }

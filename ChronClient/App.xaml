@@ -8,6 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="ChronClient\GUI\Controls\Styles\ChronClient.GUI.Controls.Styles.C_Button.xaml"/>
                 <ResourceDictionary Source="ChronClient\GUI\Controls\Styles\ChronClient.GUI.Controls.Styles.C_ScrollViewer.xaml"/>
+                <ResourceDictionary Source="ChronClient\GUI\Controls\Styles\ChronClient.GUI.Controls.Styles.C_ComboBox.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

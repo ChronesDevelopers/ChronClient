@@ -1,20 +1,26 @@
 ﻿using Chrones.Cmr.MemoryManagement;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace ChronClient.Module
 {
-    public static class Airjump
+    public static class Fullbright
     {
-        public static Modules.ModuleType ModuleType = new Modules.ModuleType("Airjump", "Movement", true, ref _ToggleState, new Action(OnEnable), new Action(OnDisable), null, null, null, null, new Action(Refresh), new Action(Toggle));
+        public static Modules.ModuleType ModuleType = new Modules.ModuleType("Fullbright", "World", true, ref _ToggleState, new Action(OnEnable), new Action(OnDisable), null, null, null, null, new Action(Refresh), new Action(Toggle));
 
         public static void OnLoad()
         {
             Modules.ModuleManagment.ValueRegister.RegisterModule(ModuleType);
         }
 
-        //static Pointer OnGround = new Pointer("Minecraft.Windows.exe", 0x3022668, new int[] { 0x30, 0x28, 0x8, 0x1F8, 0x1F0, 0x0, 0xF0, 0x178 });
+        static Pointer Brightness = new Pointer("Minecraft.Windows.exe", 0x2FFECD8, new int[] { 0xC0, 0x20, 0xB0, 0x138, 0xF0 });
 
         public static bool _ToggleState = false;
+
+        private static float _Value = 0.45f;
 
         public static bool ToggleState
         {
@@ -37,33 +43,47 @@ namespace ChronClient.Module
             }
         }
 
+        public static float Value
+        {
+            get { return _Value; }
+            set
+            {
+                _Value = value;
+            }
+        }
+
         public static void OnEnable()
         {
-            // Nop Memory
-            Memory0.mem.PatchMemory("Minecraft.Windows.exe", 0x121090E, new byte[] { 0xC6, 0x87, 0x78, 0x1, 0x0, 0x0, 0x1 });
+            Memory0.mem.WriteMemory(Brightness, _Value);
         }
 
         public static void OnDisable()
         {
-            // Restore Memory
-            Memory0.mem.PatchMemory("Minecraft.Windows.exe", 0x121090E, new byte[] { 0x44, 0x88, 0x87, 0x78, 0x01, 0x00, 0x00 });
+            Memory0.mem.WriteMemory(Brightness, 1f);
+        }
+
+        public static void Tick1000()
+        {
+            if (_ToggleState)
+            {
+                Memory0.mem.WriteMemory(Brightness, _Value);
+            }
+        }
+
+        public static void Refresh()
+        {
+            if (_ToggleState)
+            {
+                OnEnable();
+            } else if (!_ToggleState)
+            {
+                OnDisable();
+            }
         }
 
         public static void Toggle()
         {
             _ToggleState = !_ToggleState;
-        }
-
-        public static void Refresh()
-        {
-            if (ToggleState)
-            {
-                OnEnable();
-            }
-            else if (!ToggleState)
-            {
-                OnDisable();
-            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ChronClient.GUI.UserControls.ModuleControl;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,10 @@ namespace ChronClient.GUI
         public MainWindow_DashboardPage_SettingsPage()
         {
             InitializeComponent();
+
+            ListSettings.Children.Add(new C_Control_ModuleToggle(ref Module.Airjump._ToggleState, new Action(() => { Module.Airjump.Refresh(); }), "AirJump"));
         }
+
+        
     }
 }

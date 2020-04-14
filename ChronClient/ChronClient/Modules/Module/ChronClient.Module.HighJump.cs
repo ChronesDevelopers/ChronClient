@@ -9,7 +9,14 @@ namespace ChronClient.Module
 {
     public static class Highjump
     {
-        private static bool _ToggleState = false;
+        public static Modules.ModuleType ModuleType = new Modules.ModuleType("Highjump", "Movement", true, ref _ToggleState, new Action(OnEnable), new Action(OnDisable), null, null, null, null, new Action(Refresh), new Action(Toggle));
+
+        public static void OnLoad()
+        {
+            Modules.ModuleManagment.ValueRegister.RegisterModule(ModuleType);
+        }
+
+        public static bool _ToggleState = false;
 
         private static float _Value = 0.8f;
 
@@ -68,6 +75,11 @@ namespace ChronClient.Module
             {
                 OnDisable();
             }
+        }
+
+        public static void Toggle()
+        {
+            _ToggleState = !_ToggleState;
         }
     }
 }

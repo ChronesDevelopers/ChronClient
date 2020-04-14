@@ -19,12 +19,12 @@
                         <ColumnDefinition Width="150"/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="0" Content="Back" Style="{StaticResource C_Button_Flat}" Click="Button_Click" Width="auto" Height="auto"/>
-                    <Button Grid.Column="1" Content="Modules" Style="{StaticResource C_Button_Flat}" Width="auto" Height="auto"/>
+                    <Button Grid.Column="1" Content="Modules" Style="{StaticResource C_Button_Flat}" Click="ModuleButton_Click" Width="auto" Height="auto"/>
                     <Button Grid.Column="2" Content="About" Style="{StaticResource C_Button_Flat}" Width="auto" Height="auto"/>
                     <Button Grid.Column="3" Content="Settings" Style="{StaticResource C_Button_Flat}" Click="SettingsButton_Click" Width="auto" Height="auto"/>
                 </Grid>
             </Grid>
-            <Grid x:Name="ContentShower" Margin="5,1.5,5,5">
+            <Grid x:Name="ContentShower" Margin="0">
                 <Frame x:Name="ContentShowerNavigationFrame" Navigating="ContentShowerNavigationFrame_Navigated" Content="Frame" NavigationUIVisibility="Hidden" Source="/ChronClient;component/ChronClient/GUI/Page/Page/ChronClient.GUI.MainWindow.DashboardPage.WelcomePage.xaml" Margin="0"/>
             </Grid>
         </DockPanel>

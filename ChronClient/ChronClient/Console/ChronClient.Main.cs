@@ -44,7 +44,14 @@ namespace ChronClient
         public static void StartScreen()
         {
             Console.Clear();
-            cmr_font.SetConsoleFont("Consolas", 13, 27);
+            if (1 == 1)
+            {
+                cmr_font.SetConsoleFont("Consolas", 8, 17);
+            }
+            if (1 == 2)
+            {
+                cmr_font.SetConsoleFont("Consolas", 13, 27);
+            }
             cmr.CenterConsole();
             //cmr.MaximizeConsole();
             Thread.Sleep(10);
