@@ -11,4 +11,4 @@ Get it
  Here: https://github.com/ChronesDevelopers/ChronClient/releases
 
 Join discord
- Here: http://dicord.chrones.cc
+ Here: http://discord.chrones.cc
