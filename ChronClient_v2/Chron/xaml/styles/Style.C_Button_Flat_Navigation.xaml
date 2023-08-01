@@ -1,0 +1,43 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:ChronClient.xaml.styles">
+    <Style x:Key="C_Button_Flat_Navigation" TargetType="Button">
+        <Setter Property="Background" Value="#00FF9254"/>
+        <Setter Property="Foreground" Value="#FFFF9254"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="BorderBrush" Value="#FFFF9254"/>
+        <Setter Property="FontFamily" Value="Consolas"/>
+        <Setter Property="FontSize" Value="18"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="MinHeight" Value="30"/>
+        <Setter Property="MinWidth" Value="30"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border CornerRadius="0" Background="{TemplateBinding Background}" Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <EventTrigger RoutedEvent="MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="#FFFF9254" Duration="0:0:0.5" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                                    <ColorAnimation To="Black" Duration="0:0:0.5" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation To="#00FF9254" Duration="0:0:0.5" Storyboard.TargetProperty="(Button.Background).(SolidColorBrush.Color)"/>
+                                    <ColorAnimation To="#FFFF9254" Duration="0:0:0.5" Storyboard.TargetProperty="(Button.Foreground).(SolidColorBrush.Color)"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

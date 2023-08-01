@@ -1,0 +1,187 @@
+﻿<Page x:Class="ChronClient.Lite.GUI.Pages.ChronLiteMainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChronClient.Lite.GUI.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{StaticResource ChronClientDefaultAccentKey}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="/ChronClient;component/res/fonts/#Roboto Mono"
+      mc:Ignorable="d" 
+      xmlns:Controls="clr-namespace:ChronClient.Controls"
+      d:DesignHeight="521" d:DesignWidth="341"
+      Title="ChronLiteMainPage">
+
+    <Grid>
+        <Grid>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0" HorizontalAlignment="Stretch">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="CategoryButton0" Grid.Column="0" Style="{StaticResource C_Button_Flat_Navigation}"
+                            Click="CategoryButton_Click" Padding="0,0,0,0" HorizontalAlignment="Stretch"
+                            Content="Reach" BorderThickness="2,2,1,2" FontFamily="/ChronClient;component/res/fonts/#Roboto Mono Medium" FontWeight="Bold" FontSize="16"/>
+                        <Button x:Name="CategoryButton1" Grid.Column="1" Style="{StaticResource C_Button_Flat_Navigation}"
+                            Click="CategoryButton_Click" Padding="0,0,0,0" HorizontalAlignment="Stretch"
+                            Content="AC" BorderThickness="1,2,1,2" FontFamily="/ChronClient;component/res/fonts/#Roboto Mono Medium" FontWeight="Bold" FontSize="16"/>
+                        <Button x:Name="CategoryButton2" Grid.Column="2" Style="{StaticResource C_Button_Flat_Navigation}"
+                            Click="CategoryButton_Click" Padding="0,0,0,0" HorizontalAlignment="Stretch"
+                            Content="KBM" BorderThickness="1,2,1,2" FontFamily="/ChronClient;component/res/fonts/#Roboto Mono Medium" FontWeight="Bold" FontSize="16"/>
+                        <Button x:Name="CategoryButton3" Grid.Column="3" Style="{StaticResource C_Button_Flat_Navigation}"
+                            Click="CategoryButton_Click" Padding="0,0,0,0" HorizontalAlignment="Stretch"
+                            Content="H" BorderThickness="1,2,1,2" FontFamily="/ChronClient;component/res/fonts/#Roboto Mono Medium" FontWeight="Bold" FontSize="16"/>
+                        <Button x:Name="CategoryButton4" Grid.Column="4" Style="{StaticResource C_Button_Flat_Navigation}"
+                            Click="CategoryButton_Click" Padding="0,0,0,0" HorizontalAlignment="Stretch"
+                            Content="Other" BorderThickness="1,2,2,2" FontFamily="/ChronClient;component/res/fonts/#Roboto Mono Medium" FontWeight="Bold" FontSize="16"/>
+                    </Grid>
+                </Grid>
+                <TabControl x:Name="ModuleView" SelectionChanged="ModuleView_SelectionChanged" Background="{x:Null}" BorderThickness="0" BorderBrush="{x:Null}" Grid.Row="1" SelectedIndex="0">
+                    <TabItem>
+                        <ScrollViewer>
+                            <StackPanel MaxWidth="500" HorizontalAlignment="Stretch">
+                                <Grid Margin="5">
+                                    <Border BorderBrush="Gray" CornerRadius="10" BorderThickness="3"/>
+                                    <Grid Margin="8">
+                                        <StackPanel>
+                                            <Controls:ModuleButtonToggleControl x:Name="ModuleButton_Reach" Height="40" ToolTip="Extends your Reach Ability"/>
+                                            <TextBlock Text="Reach: _" x:Name="ReachText"
+                                                Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="2,3,2,0" TextWrapping="Wrap"/>
+                                            <Slider x:Name="ReachSlider" Margin="2,1,2,1"
+                                                TickFrequency="2" Orientation="Horizontal" ValueChanged="Slider_ValueChanged"
+                                                Minimum="300" Maximum="700" Value="400" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem>
+                        <ScrollViewer>
+                            <StackPanel MaxWidth="500" HorizontalAlignment="Stretch">
+                                <Grid Margin="5">
+                                    <Border BorderBrush="Gray" CornerRadius="10" BorderThickness="3"/>
+                                    <Grid Margin="8">
+                                        <StackPanel>
+                                            <Controls:ModuleButtonToggleControl x:Name="ModuleButton_AutoClicker" Height="40" ToolTip="Clicks Automaticly"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Mode:" x:Name="AutoClickerMode"
+                                                    Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="2,3,10,3" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                                <ComboBox Foreground="{StaticResource ChronClientDefaultAccentKey}" Name="AutoClickerComboBox" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                                    <ComboBoxItem Content="InGame" IsSelected="True"/>
+                                                    <ComboBoxItem Content="SendMessage"/>
+                                                    <ComboBoxItem Content="SendInput"/>
+                                                    <ComboBoxItem Content="MouseEvent"/>
+                                                </ComboBox>
+                                            </StackPanel>
+                                            <StackPanel x:Name="AutoClicker_Section_0">
+                                                <TextBlock Text="CPS Min: _" x:Name="AutoClickerCPSMinText"
+                                                    Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="2,0,2,0" TextWrapping="Wrap"/>
+                                                <Slider x:Name="AutoClickerCPSMinSlider" Margin="2,1,2,1"
+                                                    TickFrequency="1" Orientation="Horizontal" ValueChanged="Slider_ValueChanged"
+                                                    Minimum="0" Maximum="50" Value="16" />
+                                                <TextBlock Text="CPS Max: _" x:Name="AutoClickerCPSMaxText"
+                                                    Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="2,7,2,0" TextWrapping="Wrap"/>
+                                                <Slider x:Name="AutoClickerCPSMaxSlider" Margin="2,1,2,1"
+                                                    TickFrequency="1" Orientation="Horizontal" ValueChanged="Slider_ValueChanged"
+                                                    Minimum="0" Maximum="50" Value="20" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem>
+                        <ScrollViewer>
+                            <StackPanel MaxWidth="500" HorizontalAlignment="Stretch">
+                                <Grid Margin="5">
+                                    <Border BorderBrush="Gray" CornerRadius="10" BorderThickness="3"/>
+                                    <Grid Margin="8">
+                                        <StackPanel>
+                                            <Controls:ModuleButtonToggleControl x:Name="ModuleButton_KnockbackModifier" Height="40" ToolTip="Changes the ammount of Knockback when being attacked"/>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="Mode:" x:Name="KnockbackModifierMode"
+                                                    Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="2,3,10,3" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                                                <ComboBox Foreground="{StaticResource ChronClientDefaultAccentKey}" Name="KnockbackModifierComboBox" SelectionChanged="KnockbackModifierComboBox_SelectionChanged" VerticalAlignment="Center" HorizontalAlignment="Stretch">
+                                                    <ComboBoxItem Content="Modifier" IsSelected="True"/>
+                                                    <ComboBoxItem Content="NoKnockback"/>
+                                                </ComboBox>
+                                            </StackPanel>
+                                            <StackPanel x:Name="KnockbackModifier_Section_0">
+                                                <TextBlock Text="Horizontal KBM: _" x:Name="KnockbackModifierHorizontalText"
+                                                    Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="2,7,2,0" TextWrapping="Wrap"/>
+                                                <Slider x:Name="KnockbackModifierHorizontalSlider" Margin="2,1,2,1"
+                                                    TickFrequency="2" Orientation="Horizontal" ValueChanged="Slider_ValueChanged"
+                                                    Minimum="-100" Maximum="100" Value="50" />
+                                                <TextBlock Text="Vertical KBM: _" x:Name="KnockbackModifierVerticalText"
+                                                    Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="2,0,2,0" TextWrapping="Wrap"/>
+                                                <Slider x:Name="KnockbackModifierVerticalSlider" Margin="2,1,2,1"
+                                                    TickFrequency="2" Orientation="Horizontal" ValueChanged="Slider_ValueChanged"
+                                                    Minimum="0" Maximum="100" Value="50" />
+                                            </StackPanel>
+                                        </StackPanel>
+                                    </Grid>
+                                </Grid>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabItem>
+                        <TextBlock Text="4 4 444 44444444"
+                                           Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="5,0,5,0" TextWrapping="Wrap"/>
+                    </TabItem>
+                    <TabItem>
+                        <ScrollViewer>
+                            <StackPanel>
+                                <CheckBox Style="{StaticResource MaterialDesignCheckBox}" Checked="CheckBox_Checked" Name="discordrpc" Foreground="{StaticResource ChronClientDefaultAccentKey}">
+                                    Discord RPC
+                                </CheckBox>
+                            </StackPanel>
+                        </ScrollViewer>
+                    </TabItem>
+                    <TabControl.ItemContainerStyle>
+                        <Style TargetType="{x:Type TabItem}">
+                            <Setter Property="Visibility" Value="Collapsed"/>
+                        </Style>
+                    </TabControl.ItemContainerStyle>
+                </TabControl>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="1">
+                    <Button Height="25"
+                        Width="25" 
+                        VerticalAlignment="Bottom" 
+                        HorizontalAlignment="Right"
+                        ToolTip="Info" Cursor="Arrow"
+                        Margin="0,0,5,5" 
+                        Style="{StaticResource MaterialDesignIconButton}">
+                        <Image Source="/ChronClient;component/res/icon/materialdesign/action/info/baseline_info_white_18dp.png" Opacity="0.3"/>
+                    </Button>
+                    <Button Height="25"
+                        Width="25" 
+                        VerticalAlignment="Bottom" 
+                        HorizontalAlignment="Right"
+                        ToolTip="Info" Cursor="Arrow"
+                        Margin="0,0,5,5" 
+                        Style="{StaticResource MaterialDesignIconButton}">
+                        <Image Source="/ChronClient;component/res/icon/materialdesign/action/settings/ic_settings_white_48dp.png" Opacity="0.3"/>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <SolidColorBrush x:Key="ChronClientDefaultAccentKey" Color="#FFFF9254"/>
+    <SolidColorBrush x:Key="ChronClientDefaultBackgroundKey" Color="#FF141414"/>
+    <!-- Themes -->
+    <!-- Skiller Theme-->
+    <SolidColorBrush x:Key="ChronClient_Theme_Clear_Accent" Color="#FF003CFF"/>
+    <SolidColorBrush x:Key="ChronClient_Theme_Clear_Background" Color="White"/>
+    <!-- Matrix Theme-->
+    <SolidColorBrush x:Key="ChronClient_Theme_Matrix_Accent" Color="#FF00FF23"/>
+    <SolidColorBrush x:Key="ChronClient_Theme_Matrix_Background" Color="White"/>
+</ResourceDictionary>

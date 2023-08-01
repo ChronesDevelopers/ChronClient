@@ -1,0 +1,73 @@
+﻿<Page x:Class="ChronClient.Lite.GUI.Pages.LoadingPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChronClient.GUI.Pages"
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      TextElement.FontWeight="Regular"
+      TextElement.FontSize="13"
+      TextOptions.TextFormattingMode="Ideal"
+      TextOptions.TextRenderingMode="Auto"
+      FontFamily="/ChronClient;component/res/fonts/#Roboto Mono"
+      Background="Transparent"
+      d:DesignHeight="615.868" d:DesignWidth="653.559"
+      Title="LoginPage" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid x:Name="LoadingAnimationGrid" Visibility="Visible" Background="{x:Null}">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Height="100" Width="100">
+                <Image Source="/ChronClient;component/res/icon/ChronClient/icon/Square44x44Logo.altform-lightunplated_targetsize-256.png" RenderTransformOrigin="0.5,0.5">
+                    <Image.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="0"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </Image.RenderTransform>
+                </Image>
+            </Grid>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,120,0,0">
+                <ProgressBar IsIndeterminate="True" Width="70" Height="3" Opacity="0.7"/>
+            </Grid>
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <TextBlock Text="ChronClient Lite" x:Name="TextBlockVersion"
+                                           Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="5,0,5,0" TextWrapping="Wrap"/>
+            </Grid>
+            <Grid x:Name="ThereWasAnErrorGrid" Visibility="Hidden" IsVisibleChanged="ThereWasAnErrorGrid_IsVisibleChanged">
+                <Grid>
+                    <Border Background="#7F000000" Name="FullsettingsGrid_Background"/>
+                    <Grid Margin="10">
+                        <Border Background="#CC141414" CornerRadius="10" BorderThickness="3" BorderBrush="#FFFF9254"/>
+                        <DockPanel Margin="10,5" LastChildFill="true">
+                            <StackPanel DockPanel.Dock="Top">
+                                <TextBlock Text="There Was an Error" Margin="4" FontFamily="/ChronClient;component/res/fonts/#Roboto Mono Medium" Foreground="{StaticResource ChronClientDefaultAccentKey}" VerticalAlignment="Top"/>
+                            </StackPanel>
+                            <Grid DockPanel.Dock="Bottom">
+                                <Grid Height="30" Margin="0,0,0,3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="2*"/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Button x:Name="RunAsAdminButton" Content="Run as Admin" Padding="0" Click="RunAsAdminButton_Click" Grid.Column="0" Margin="0,0,5,0" Height="30" Cursor="Arrow"  Style="{StaticResource C_Button_Flat_Navigation}"/>
+                                    <Button x:Name="CloseButton" Content="Close" Grid.Column="1" Click="CloseButton_Click" Padding="0" Margin="0,0,5,0" Height="30" Cursor="Arrow"  Style="{StaticResource C_Button_Flat_Navigation}"/>
+                                </Grid>
+                            </Grid>
+                            <StackPanel>
+                                <TextBlock Text="Error: _"
+                                           Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="5,0,5,0" TextWrapping="Wrap"/>
+                                <TextBlock Text="ErrorCode: unknow"
+                                           Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="5,0,5,0" TextWrapping="Wrap"/>
+                                <TextBlock Text="Running as admin could fix the Error"
+                                           Foreground="{StaticResource ChronClientDefaultAccentKey}" Margin="5,0,5,0" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </DockPanel>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
