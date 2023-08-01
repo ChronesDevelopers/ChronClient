@@ -4,7 +4,7 @@
 > - *1.* many backups became lost
 > - *2.* newer projects were privated
 
-### Thank you to all Chron+ Users!
+### Thank you to all Chron⧫ Users!
 
 Thank you so so much for donating it helped me (the creator) a lot and I hope I can make better clients in the future! 
 
