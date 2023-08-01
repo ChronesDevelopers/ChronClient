@@ -1,5 +1,0 @@
-C:\Users\lukax\source\repos\ChronClient\obj\Debug\ChronClient.csprojAssemblyReference.cache
-C:\Users\lukax\source\repos\ChronClient\obj\Debug\ChronClient\GUI\MainWindow.g.cs
-C:\Users\lukax\source\repos\ChronClient\obj\Debug\App.g.cs
-C:\Users\lukax\source\repos\ChronClient\obj\Debug\ChronClient_MarkupCompile.cache
-C:\Users\lukax\source\repos\ChronClient\obj\Debug\ChronClient_MarkupCompile.lref
