@@ -1,6 +1,6 @@
-# ChronClient
-
 > :warning: This project is no longer being maintained.
+
+# ChronClient
 
 This Minecraft Modification Utility allows you to cheat in Minecraft. It uses C# and WPF to draw the GUI.
 
