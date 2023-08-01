@@ -1,0 +1,34 @@
+﻿<Page x:Class="ChronClient.GUI.OverlayThemes.Theme_Yeey"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChronClient.GUI.OverlayThemes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Theme_Yeey"
+      Foreground="Black"
+      FontFamily="/ChronClient;component/Res/Fonts/Roboto Condensed/#Roboto Condensed">
+
+    <Grid>
+        <Grid Margin="5 12 5 5">
+            <Border Background="White"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Padding="4,0">
+                <TextBlock Text="ChronClient, Yeey" FontSize="28"/>
+            </Border>
+            <Border Background="White"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Padding="4,0">
+                <StackPanel>
+                    <TextBlock Text="Speed (0.02) [NumPad9]" FontSize="20"/>
+                </StackPanel>
+            </Border>
+            <Border Background="White"
+                    HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                    Padding="4,0">
+                <TextBlock Text="X | Y | Z" FontSize="20"/>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>

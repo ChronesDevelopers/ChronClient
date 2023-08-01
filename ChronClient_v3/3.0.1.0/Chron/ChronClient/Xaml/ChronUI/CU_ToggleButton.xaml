@@ -1,0 +1,64 @@
+﻿<UserControl x:Class="ChronClient.GUI.ChronUI.CU_ToggleButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ChronClient.GUI.ChronUI"
+             mc:Ignorable="d" 
+             d:DesignHeight="30" d:DesignWidth="100"
+             FontSize="14" FontWeight="Bold" MinWidth="30" MinHeight="30" Foreground="White">
+    <UserControl.Resources>
+        <Style x:Key="CU_ToggleButton_Button" TargetType="Button">
+            <Setter Property="Background" Value="#00FFFFFF"/>
+            <Setter Property="Foreground" Value="{x:Null}"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="BorderBrush" Value="#FFFFFFFF"/>
+            <Setter Property="FocusVisualStyle" Value="{StaticResource CU_FocusVisualStyle_None}"/>
+
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Border CornerRadius="10" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"/>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="MouseEnter">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation To="4" Duration="0:0:0.3" Storyboard.TargetProperty="BorderThickness">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="MouseLeave">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation To="2" Duration="0:0:0.3" Storyboard.TargetProperty="BorderThickness">
+                                            <ThicknessAnimation.EasingFunction>
+                                                <QuadraticEase EasingMode="EaseInOut"/>
+                                            </ThicknessAnimation.EasingFunction>
+                                        </ThicknessAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Grid>
+            <Border Name="Border_Disabled" Opacity="100" CornerRadius="10" Background="#00FFFFFF" Padding="2">
+                <TextBlock Name="TextBlock_Disabled" Text="Test Text" Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Border Name="Border_Enabled" Opacity="0" CornerRadius="10" Background="#FFFFFFFF" Padding="2">
+                <TextBlock Name="TextBlock_Enabled" Text="Test Text" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Border>
+            <Button Style="{StaticResource CU_ToggleButton_Button}" Click="Button_Click"/>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,294 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3D75238F-1683-4C3E-9D04-87263597162D}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ChronClient</RootNamespace>
+    <AssemblyName>ChronClient</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>latest</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Serialization" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="ChronClient\Data\GlobalData\GlobalData.cs" />
+    <Compile Include="ChronClient\Data\GlobalData\GlobalData.MainWindow.cs" />
+    <Compile Include="ChronClient\Data\GlobalData\GlobalData.Minecraft.cs" />
+    <Compile Include="ChronClient\Data\GlobalData\GlobalData.Overlay.cs" />
+    <Compile Include="ChronClient\IModule\IModule.UI\CE.cs" />
+    <Compile Include="ChronClient\IModule\IModule.UI\UICollection.cs" />
+    <Compile Include="ChronClient\IModule\IModule.UI\UIElement.cs" />
+    <Compile Include="ChronClient\IModule\IModule.UI\UIElementConverter.cs" />
+    <Compile Include="ChronClient\IModule\IModule.UI\UIGrid.cs" />
+    <Compile Include="ChronClient\IModule\IModule.UI\UIGridElement.cs" />
+    <Compile Include="ChronClient\IModule\IModule.UI\UISlider.cs" />
+    <Compile Include="ChronClient\IModule\IModule.UI\UIStackPanel.cs" />
+    <Compile Include="ChronClient\IModule\IModule.UI\UITextBlock.cs" />
+    <Compile Include="ChronClient\IModule\IModule.UI\UIType.cs" />
+    <Compile Include="ChronClient\Modules\AutoClicker.cs" />
+    <Compile Include="ChronClient\Modules\Template.cs" />
+    <Compile Include="ChronClient\UI\OverlayPages\Theme_Fluent\Theme_Fluent.xaml.cs">
+      <DependentUpon>Theme_Fluent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\UI\ClickGUIPages\Theme_Fluent\Theme_ClickGUI_Fluent.xaml.cs">
+      <DependentUpon>Theme_ClickGUI_Fluent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\UI\Pages\Loading\LoadingPage.xaml.cs">
+      <DependentUpon>LoadingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\UI\Pages\Main\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChronClient\UI\Window\Overlay.xaml.cs">
+      <DependentUpon>Overlay.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Lib\Cmr\Cmr.C.cs" />
+    <Compile Include="Lib\Cmr\Cmr.Console.cs" />
+    <Compile Include="Lib\Cmr\Cmr.cs" />
+    <Compile Include="Lib\Cmr\Cmr.Input.KeyboardHook.cs" />
+    <Compile Include="Lib\Cmr\Cmr.Math.cs" />
+    <Compile Include="Lib\Cmr\Cmr.Win32.cs" />
+    <Compile Include="Lib\Cmr\Cmr.Input.Keys.cs" />
+    <Compile Include="ChronClient\IModule\Key.cs" />
+    <Compile Include="ChronClient\IModule\KeyEventHandler.cs" />
+    <Page Include="ChronClient\UI\OverlayPages\Theme_Fluent\Theme_Fluent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\UI\ClickGUIPages\Theme_Fluent\Theme_ClickGUI_Fluent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\UI\Pages\Loading\LoadingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\UI\Pages\Main\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\UI\Window\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="ChronClient\UI\Window\MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="ChronClient\UI\Window\Overlay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\Xaml\ChronUI\CU_Button_NR.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\Xaml\ChronUI\DefaultButton.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\Xaml\ChronUI\CU_GroupBox_Module.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChronClient\Xaml\ChronUI\DefaultTooltip.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChronClient\IModule\IModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Resource Include="Res\Fonts\Roboto\Roboto-Black.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-BlackItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Bold.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-BoldItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Italic.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Light.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-LightItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Medium.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-MediumItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Regular.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Thin.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-ThinItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Black.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-BlackItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Bold.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-BoldItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-ExtraBold.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-ExtraBoldItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-ExtraLight.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-ExtraLightItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Italic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Light.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-LightItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Medium.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-MediumItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Regular.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-SemiBold.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-SemiBoldItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Thin.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-ThinItalic.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ChronClient\App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ChronClient\Scripting\" />
+    <Folder Include="ChronClient\UI\Pages\Modules\" />
+    <Folder Include="ChronClient\UI\Pages\Settings\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Costura.Fody">
+      <Version>4.1.0</Version>
+    </PackageReference>
+    <PackageReference Include="Fody">
+      <Version>6.2.5</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="MaterialDesignColors">
+      <Version>1.2.7</Version>
+    </PackageReference>
+    <PackageReference Include="MaterialDesignThemes">
+      <Version>3.2.0</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>12.0.3</Version>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\Media\Icons\Menu\icon_menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\Media\Icons\Settings\icon_settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\Media\Icons\Space_Bar\icon_space_bar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\Media\Icons\Layers\icon_layers.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\Media\Icons\Layers\icon_layers_clear.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\Media\Icons\Account\account_circle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\Media\Icons\Desktop_Window\icon_desktop_monitor.png" />
+    <Resource Include="Res\Media\Icons\Desktop_Window\icon_no_desktop_monitor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\Media\Icons\Download\icon_download_get_app.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Res\Logo\9\Logo_Black_Transparent.png" />
+    <Resource Include="Res\Logo\9\Logo_Black_Transparent_1000x.png" />
+    <Resource Include="Res\Logo\9\Logo_Black_Transparent_VeryHighRes.png" />
+    <Resource Include="Res\Logo\9\Logo_White_Transparent.png" />
+    <Resource Include="Res\Logo\9\Logo_White_Transparent_1000x.png" />
+    <Resource Include="Res\Logo\9\Logo_White_Transparent_VeryHighRes.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

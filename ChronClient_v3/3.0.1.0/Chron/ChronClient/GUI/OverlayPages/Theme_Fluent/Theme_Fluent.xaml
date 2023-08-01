@@ -1,0 +1,33 @@
+﻿<Page x:Class="ChronClient.GUI.OverlayThemes.Theme_Fluent"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChronClient.GUI.OverlayThemes"
+      mc:Ignorable="d" 
+      FontFamily="/ChronClient;component/Res/Fonts/Poopins/#Poppins"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Theme_Fluent">
+
+    <Grid>
+        <Grid Margin="5 10 5 5">
+            <Grid>
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                    <Border Background="#B2000000" Padding="10 5">
+                        <TextBlock Foreground="White">
+                        <Run Text="ChronClient v3" FontSize="24"/><LineBreak/>
+                        <Run Text="Fluent Theme" FontSize="16"/>
+                        </TextBlock>
+                    </Border>
+                </Grid>
+                <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                    <StackPanel>
+                        <TextBlock Text="Airjump [NumPad8]" Background="#B2000000" Foreground="White" HorizontalAlignment="Right" FontSize="16" Padding="4 1"/>
+                        <TextBlock Text="Speed [N]" Background="#B2000000" Foreground="White" HorizontalAlignment="Right" FontSize="16" Padding="4 1"/>
+                        <TextBlock Text="Jetpack (Velocity, 0.4) [F]" Background="#B2000000" Foreground="White" HorizontalAlignment="Right" FontSize="16" Padding="4 1"/>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

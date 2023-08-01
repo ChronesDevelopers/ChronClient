@@ -1,0 +1,102 @@
+﻿<Page x:Class="ChronClient.GUI.OverlayThemes.Theme_Darki"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChronClient.GUI.OverlayThemes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Theme_Darki">
+    <Page.Resources>
+        <ResourceDictionary>
+            <SolidColorBrush x:Key="ChronClientDefaultAccentKey" Color="#FFFF9254"/>
+            <SolidColorBrush x:Key="ChronClientDefaultBackgroundKey" Color="#FF141414"/>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid Margin="5 12 5 5">
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+                <StackPanel>
+                    <TextBlock x:Name="CLIENT_NAME" Padding="10,0,10,0" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="22" Background="Black" Foreground="{StaticResource ChronClientDefaultAccentKey}"
+                               Text="ChronClient v3.0.1"/>
+                    <Grid>
+                        <StackPanel Margin="0,1,0,0">
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+            <Grid HorizontalAlignment="Right" VerticalAlignment="Top">
+                <StackPanel x:Name="ListArrayStackPanel" HorizontalAlignment="Right" Margin="0,1,0,0">
+
+                </StackPanel>
+            </Grid>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+            </Grid>
+            <Grid HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                <StackPanel Margin="0,1,0,0" HorizontalAlignment="Right">
+                    <TextBlock Padding="5,0,5,0" Margin="0,-1,0,0" HorizontalAlignment="Right" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="17" Background="Black" Foreground="{StaticResource ChronClientDefaultAccentKey}"
+                               Text="Darki Theme"/>
+                    <TextBlock Padding="5,0,5,0" Margin="0,-1,0,0" HorizontalAlignment="Right" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="17" Background="Black" Foreground="{StaticResource ChronClientDefaultAccentKey}"
+                               Text="by CXCubeHD"/>
+                </StackPanel>
+            </Grid>
+            <Grid HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <StackPanel>
+                    <Grid Margin="0,0,0,50">
+                        <StackPanel>
+                            <Grid Width="40" Height="40" Margin="2">
+                                <Border     Name="KeyStroke_W_Border" Background="Black" BorderThickness="2" BorderBrush="Black"/>
+                                <TextBlock  Name="KeyStroke_W" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="20" Foreground="{DynamicResource ChronClientDefaultAccentKey}"
+                                        Text="W"/>
+                            </Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <Grid Width="40" Height="40" Margin="2">
+                                    <Border Name="KeyStroke_A_Border" Background="Black" BorderThickness="2" BorderBrush="Black"/>
+                                    <TextBlock  Name="KeyStroke_A" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="20" Foreground="{DynamicResource ChronClientDefaultAccentKey}"
+                                        Text="A"/>
+                                </Grid>
+                                <Grid Width="40" Height="40" Margin="2">
+                                    <Border Name="KeyStroke_S_Border" Background="Black" BorderThickness="2" BorderBrush="Black"/>
+                                    <TextBlock  Name="KeyStroke_S" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="20" Foreground="{DynamicResource ChronClientDefaultAccentKey}"
+                                        Text="S"/>
+                                </Grid>
+                                <Grid Width="40" Height="40" Margin="2">
+                                    <Border Name="KeyStroke_D_Border" Background="Black" BorderThickness="2" BorderBrush="Black"/>
+                                    <TextBlock  Name="KeyStroke_D" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="20" Foreground="{DynamicResource ChronClientDefaultAccentKey}"
+                                        Text="D"/>
+                                </Grid>
+                            </StackPanel>
+                            <Grid HorizontalAlignment="Stretch" Margin="2" Height="30">
+                                <Border     Name="KeyStroke_Space_Border" Background="Black" BorderThickness="2" BorderBrush="Black"/>
+                                <TextBlock  Name="KeyStroke_Space" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="18" Foreground="{DynamicResource ChronClientDefaultAccentKey}"
+                                        Text="-------"/>
+                            </Grid>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                <Grid Width="62" Height="30" Margin="2" HorizontalAlignment="Stretch">
+                                    <Border Name="KeyStroke_LMB_Border" Background="Black" BorderThickness="2" BorderBrush="Black"/>
+                                    <TextBlock  Name="KeyStroke_MBL" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="18" Foreground="{DynamicResource ChronClientDefaultAccentKey}"
+                                        Text="LMB"/>
+                                </Grid>
+                                <Grid Width="62" Height="30" Margin="2" HorizontalAlignment="Stretch">
+                                    <Border Name="KeyStroke_RMB_Border" Background="Black" BorderThickness="2" BorderBrush="Black"/>
+                                    <TextBlock  Name="KeyStroke_MBR" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="18" Foreground="{DynamicResource ChronClientDefaultAccentKey}"
+                                        Text="RMB"/>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </Grid>
+                    <Grid>
+                        <StackPanel>
+                            <TextBlock Name="PositionX" Padding="5,0,5,0" Margin="0,-1,0,0" HorizontalAlignment="Left" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="17" Background="Black" Foreground="{StaticResource ChronClientDefaultAccentKey}"
+                                Text="X"/>
+                            <TextBlock Name="PositionY" Padding="5,0,5,0" Margin="0,-1,0,0" HorizontalAlignment="Left" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="17" Background="Black" Foreground="{StaticResource ChronClientDefaultAccentKey}"
+                                Text="Y"/>
+                            <TextBlock Name="PositionZ" Padding="5,0,5,0" Margin="0,-1,0,0" HorizontalAlignment="Left" FontFamily="/ChronClient;component/Res/Fonts/Roboto Mono/#Roboto Mono" FontSize="17" Background="Black" Foreground="{StaticResource ChronClientDefaultAccentKey}"
+                                Text="Z"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

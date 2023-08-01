@@ -1,0 +1,146 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>ChronClient</RootNamespace>
+    <AssemblyName>ChronClient</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Res\Fonts\Mojangles\Mojangles.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-Black.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-BlackItalic.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-Bold.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-BoldItalic.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-ExtraBold.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-ExtraBoldItalic.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-ExtraLight.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-ExtraLightItalic.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-Italic.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-Light.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-LightItalic.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-Medium.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-MediumItalic.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-Regular.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-SemiBold.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-SemiBoldItalic.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-Thin.ttf" />
+    <None Remove="Res\Fonts\Poopins\Poppins-ThinItalic.ttf" />
+    <None Remove="Res\Fonts\Roboto Condensed\RobotoCondensed-Bold.ttf" />
+    <None Remove="Res\Fonts\Roboto Condensed\RobotoCondensed-BoldItalic.ttf" />
+    <None Remove="Res\Fonts\Roboto Condensed\RobotoCondensed-Italic.ttf" />
+    <None Remove="Res\Fonts\Roboto Condensed\RobotoCondensed-Light.ttf" />
+    <None Remove="Res\Fonts\Roboto Condensed\RobotoCondensed-LightItalic.ttf" />
+    <None Remove="Res\Fonts\Roboto Condensed\RobotoCondensed-Regular.ttf" />
+    <None Remove="Res\Fonts\Roboto Mono\RobotoMono-Bold.ttf" />
+    <None Remove="Res\Fonts\Roboto Mono\RobotoMono-BoldItalic.ttf" />
+    <None Remove="Res\Fonts\Roboto Mono\RobotoMono-Italic.ttf" />
+    <None Remove="Res\Fonts\Roboto Mono\RobotoMono-Light.ttf" />
+    <None Remove="Res\Fonts\Roboto Mono\RobotoMono-LightItalic.ttf" />
+    <None Remove="Res\Fonts\Roboto Mono\RobotoMono-Medium.ttf" />
+    <None Remove="Res\Fonts\Roboto Mono\RobotoMono-MediumItalic.ttf" />
+    <None Remove="Res\Fonts\Roboto Mono\RobotoMono-Regular.ttf" />
+    <None Remove="Res\Fonts\Roboto Mono\RobotoMono-Thin.ttf" />
+    <None Remove="Res\Fonts\Roboto Mono\RobotoMono-ThinItalic.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-Black.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-BlackItalic.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-Bold.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-BoldItalic.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-Italic.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-Light.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-LightItalic.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-Medium.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-MediumItalic.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-Regular.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-Thin.ttf" />
+    <None Remove="Res\Fonts\Roboto\Roboto-ThinItalic.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="{d37e2a3e-8545-3a39-9f4f-31827c9124ab}">
+      <Guid>d37e2a3e-8545-3a39-9f4f-31827c9124ab</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Costura.Fody" Version="4.1.0" />
+    <PackageReference Include="Fody" Version="6.3.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="MaterialDesignColors" Version="1.2.7" />
+    <PackageReference Include="MaterialDesignThemes" Version="3.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ChronClient\GUI\Pages\Modules\" />
+    <Folder Include="ChronClient\GUI\Pages\Settings\" />
+    <Folder Include="ChronClient\Scripting\" />
+    <Folder Include="ChronClient\Xaml\Themes\DarkiUI\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="App.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Res\Fonts\Mojangles\Mojangles.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Black.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-BlackItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Bold.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-BoldItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-ExtraBold.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-ExtraBoldItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-ExtraLight.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-ExtraLightItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Italic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Light.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-LightItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Medium.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-MediumItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Regular.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-SemiBold.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-SemiBoldItalic.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-Thin.ttf" />
+    <Resource Include="Res\Fonts\Poopins\Poppins-ThinItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto Condensed\RobotoCondensed-Bold.ttf" />
+    <Resource Include="Res\Fonts\Roboto Condensed\RobotoCondensed-BoldItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto Condensed\RobotoCondensed-Italic.ttf" />
+    <Resource Include="Res\Fonts\Roboto Condensed\RobotoCondensed-Light.ttf" />
+    <Resource Include="Res\Fonts\Roboto Condensed\RobotoCondensed-LightItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto Condensed\RobotoCondensed-Regular.ttf" />
+    <Resource Include="Res\Fonts\Roboto Mono\RobotoMono-Bold.ttf" />
+    <Resource Include="Res\Fonts\Roboto Mono\RobotoMono-BoldItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto Mono\RobotoMono-Italic.ttf" />
+    <Resource Include="Res\Fonts\Roboto Mono\RobotoMono-Light.ttf" />
+    <Resource Include="Res\Fonts\Roboto Mono\RobotoMono-LightItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto Mono\RobotoMono-Medium.ttf" />
+    <Resource Include="Res\Fonts\Roboto Mono\RobotoMono-MediumItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto Mono\RobotoMono-Regular.ttf" />
+    <Resource Include="Res\Fonts\Roboto Mono\RobotoMono-Thin.ttf" />
+    <Resource Include="Res\Fonts\Roboto Mono\RobotoMono-ThinItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Black.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-BlackItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Bold.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-BoldItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Italic.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Light.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-LightItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Medium.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-MediumItalic.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Regular.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-Thin.ttf" />
+    <Resource Include="Res\Fonts\Roboto\Roboto-ThinItalic.ttf" />
+  </ItemGroup>
+
+</Project>

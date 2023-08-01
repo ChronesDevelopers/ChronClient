@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="ChronClient\GUI\ClickGUIPages\Test\Theme_ClickGUI_Test.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ChronClient\GUI\ClickGUIPages\Theme_Yeey\Theme_ClickGUI_Yeey.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ChronClient\GUI\OverlayPages\Theme_Yeey\Theme_Yeey.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="ChronClient\GUI\Window\Dialogs\ChronDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ChronClient\GUI\ClickGUIPages\Test\Theme_ClickGUI_Test.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\ClickGUIPages\Theme_Yeey\Theme_ClickGUI_Yeey.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\OverlayPages\Theme_Yeey\Theme_Yeey.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\Window\Dialogs\ChronDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\Xaml\Themes\YeeyUI\YeeyUI_GroupBox_Module.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\Xaml\Themes\YeeyUI\YeeyUI_Button_NR.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,24 @@
+﻿<Page x:Class="ChronClient.GUI.ClickGUIThemes.Theme_ClickGUI_Test"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChronClient.GUI.ClickGUIThemes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Theme_Test">
+
+    <Grid>
+        <Border Background="#55000000" MouseUp="Border_MouseUp"/>
+        <TextBlock Text="Test Click GUI" Background="White" HorizontalAlignment="Center" VerticalAlignment="Center"
+                   FontSize="20"/>
+        <StackPanel Width="180"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
+            <Button Content="Nothing..."
+                    Padding="8,2" Margin="0,3"/>
+            <Button Content="Go to Fluent Click GUI" Click="Button_Click"
+                    Padding="8,2" Margin="0,3"/>
+        </StackPanel>
+    </Grid>
+</Page>

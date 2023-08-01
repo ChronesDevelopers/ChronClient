@@ -1,0 +1,37 @@
+﻿<Page x:Class="ChronClient.GUI.OverlayThemes.Theme_Chronicel"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChronClient.GUI.OverlayThemes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Theme_Chronicel">
+
+    <Grid>
+        <Grid Margin="5 10 5 5">
+            <Grid>
+                <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="5,5,0,0">
+                    <Border BorderThickness="0" Background="#CC000000" CornerRadius="10" Margin="0.5"/>
+                    <Border x:Name="Border_Update_Color_9873" BorderThickness="2" CornerRadius="10" BorderBrush="White"/>
+                    <Grid>
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <TextBlock x:Name="TextBlock_Update_Color_8983" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ChronClient" VerticalAlignment="Top" Margin="10,5,2,5" Foreground="White" FontFamily="Consolas" FontSize="24" FontWeight="Bold" FontStyle="Italic"/>
+                            <TextBlock x:Name="TextBlock_Update_Color_8984" HorizontalAlignment="Left" TextWrapping="Wrap" Text="⧫" VerticalAlignment="Top" Margin="0,5,10,5" Foreground="White" FontFamily="Consolas" FontSize="24" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
+                <Grid HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,5,5,0">
+                    <Border BorderThickness="0" Background="#CC000000" CornerRadius="10" Margin="0.5"/>
+                    <Border x:Name="Border_Update_Color_4567" BorderBrush="White" BorderThickness="2" CornerRadius="10"/>
+                    <TextBlock x:Name="ModuleList" HorizontalAlignment="Right" TextWrapping="Wrap" Text="Airjump" VerticalAlignment="Top" Margin="10,5" Foreground="White" FontFamily="Consolas" FontSize="18" TextAlignment="Right"/>
+                </Grid>
+            </Grid>
+            <Grid Name="PlayerListGrid" Margin="5,0,0,5" HorizontalAlignment="Left" VerticalAlignment="Bottom">
+                <Border BorderThickness="0" Background="#CC000000" CornerRadius="10" Margin="0.5"/>
+                <Border x:Name="Border_Update_Color_9874" BorderThickness="2" CornerRadius="10" BorderBrush="White"/>
+                <TextBlock Margin="10,5" Text="PlayerList:" Foreground="White" Name="TextBlock_Update_Color_8985" TextWrapping="Wrap" FontFamily="Consolas" FontSize="15" FontWeight="Bold" FontStyle="Italic"/>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

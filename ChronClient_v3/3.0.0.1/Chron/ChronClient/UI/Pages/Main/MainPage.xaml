@@ -1,0 +1,94 @@
+﻿<Page x:Class="ChronClient.UI.Pages.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+      xmlns:local="clr-namespace:ChronClient.UI.Pages"
+      mc:Ignorable="d"
+      d:DesignHeight="450" d:DesignWidth="800"
+      Foreground="White"
+      Title="MainPage">
+
+    <Grid>
+        <Grid Background="Black">
+            <Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="36"/>
+                        <RowDefinition Height="1"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Border Background="#101010" Height="32" CornerRadius="10" Margin="10,2">
+                            <Grid>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                    <Button Width="32" Height="32" Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
+                                        <Image Opacity="0.6" Width="20" Height="20" Source="/ChronClient;component/Res/Media/Icons/Menu/icon_menu.png"/>
+                                    </Button>
+                                    <Button Content="All" Foreground="White"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                                    <Button Content="Movement" Foreground="White"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                                    <Button Content="Combat" Foreground="White"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                                    <Button Content="Player" Foreground="White"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                                    <Button Content="World" Foreground="White"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                                    <Button Content="Teleport" Foreground="White"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                                    <Button Content="Other" Foreground="White"
+                                        Style="{StaticResource MaterialDesignFlatButton}"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                                    <Button ToolTip="Download Latest Update" Width="32" Height="32" Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
+                                        <Image Opacity="0.6" Width="20" Height="20" Source="/ChronClient;component/Res/Media/Icons/Download/icon_download_get_app.png"/>
+                                    </Button>
+                                    <Button ToolTip="Overlay Enabled" Width="32" Height="32" Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
+                                        <Image Opacity="0.6" Width="20" Height="20" Source="/ChronClient;component/Res/Media/Icons/Desktop_Window/icon_desktop_monitor.png"/>
+                                    </Button>
+                                    <Button ToolTip="Themes" Width="32" Height="32" Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
+                                        <Image Opacity="0.6" Width="20" Height="20" Source="/ChronClient;component/Res/Media/Icons/Layers/icon_layers.png"/>
+                                    </Button>
+                                    <Button ToolTip="Keybinds" Width="32" Height="32" Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
+                                        <Image Opacity="0.6" Width="20" Height="20" Source="/ChronClient;component/Res/Media/Icons/Space_Bar/icon_space_bar.png"/>
+                                    </Button>
+                                    <Button ToolTip="Account" Width="32" Height="32" Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
+                                        <Image Opacity="0.6" Width="20" Height="20" Source="/ChronClient;component/Res/Media/Icons/Account/account_circle.png"/>
+                                    </Button>
+                                    <Button ToolTip="Settings" Width="32" Height="32" Foreground="White" Style="{StaticResource MaterialDesignIconButton}">
+                                        <Image Opacity="0.6" Width="20" Height="20" Source="/ChronClient;component/Res/Media/Icons/Settings/icon_settings.png"/>
+                                    </Button>
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        
+                    </Grid>
+                    <Grid Grid.Row="2">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="190"/>
+                                <ColumnDefinition Width="190"/>
+                                <ColumnDefinition Width="190"/>
+                                <ColumnDefinition Width="190"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="310"/>
+                                <RowDefinition Height="310"/>
+                            </Grid.RowDefinitions>
+                            <GroupBox Header="Movement" Margin="5"
+                                      Width="180"
+                                      Height="300"
+                                      Style="{DynamicResource CU_GroupBox_Module}">
+                                
+                            </GroupBox>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

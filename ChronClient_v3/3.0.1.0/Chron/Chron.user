@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <ApplicationDefinition Update="App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="ChronClient\GUI\ClickGUIPages\Theme_Fluent\Theme_ClickGUI_Fluent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\OverlayPages\Theme_Chronicel\Theme_Chronicel.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\OverlayPages\Theme_Darki\Theme_Darki.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\OverlayPages\Theme_Fluent\Theme_Fluent.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\OverlayPages\Theme_Matrix\Theme_Matrix.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\Pages\BlankPage\BlankPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\Pages\Loading\LoadingPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\Pages\Main\MainPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\Window\MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\GUI\Window\Overlay.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\Xaml\ChronUI\CU_Button_NR.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\Xaml\ChronUI\CU_DefaultButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\Xaml\ChronUI\CU_DefaultTooltip.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\Xaml\ChronUI\CU_FocusVisualStyle_None.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\Xaml\ChronUI\CU_GroupBox_Module.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\Xaml\ChronUI\CU_Scrollbar.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\Xaml\ChronUI\CU_ScrollViewer.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="ChronClient\Xaml\ChronUI\CU_ToggleButton.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+</Project>

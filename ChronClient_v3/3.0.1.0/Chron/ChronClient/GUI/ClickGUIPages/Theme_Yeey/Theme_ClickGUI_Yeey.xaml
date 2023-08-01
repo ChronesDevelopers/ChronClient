@@ -1,0 +1,122 @@
+﻿<Page x:Class="ChronClient.GUI.ClickGUIThemes.Theme_ClickGUI_Yeey"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ChronClient.GUI.ClickGUIThemes"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      FontFamily="/ChronClient;component/Res/Fonts/Roboto Condensed/#Roboto Condensed"
+      Title="Theme_Yeet">
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/ChronClient;component/ChronClient/Xaml/Themes/YeeyUI/YeeyUI_GroupBox_Module.xaml"/>
+                <ResourceDictionary Source="/ChronClient;component/ChronClient/Xaml/Themes/YeeyUI/YeeyUI_Button_NR.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+    <Grid>
+        <Grid>
+            <Grid>
+                <Border Background="#40000000"/>
+                <Viewbox Stretch="Uniform" MaxWidth="1500" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <Border Background="White" CornerRadius="12" 
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Margin="20"
+                        BorderThickness="2"
+                        BorderBrush="Black">
+                        <Grid>
+                            <TextBlock Text="ChronClient Yeey Theme"
+                                       FontSize="20"
+                                       HorizontalAlignment="Left" VerticalAlignment="Top"
+                                       Margin="16,10,0,0"/>
+                            <TextBlock Text="X"
+                                       FontSize="20"
+                                       HorizontalAlignment="Right" VerticalAlignment="Top"
+                                       Margin="0,10,16,0"/>
+                            <Grid Margin="10,30,10,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <GroupBox Grid.Column="0" Style="{StaticResource YeeyUI_GroupBox_Module}"
+                                  Header="Test Module" Margin="5,10">
+                                    <ScrollViewer>
+                                        <StackPanel>
+                                            <Border Background="White" BorderBrush="#F0000000" BorderThickness="2" CornerRadius="10" Margin="0,3" Padding="2,2">
+                                                <StackPanel>
+                                                    <Button Content="AirJump" Margin="2,4,2,2" Style="{StaticResource YeeyUI_Button_NR}"/>
+                                                    <TextBlock Text="Let's you jump in the air" Margin="2"/>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Background="White" BorderBrush="#F0000000" BorderThickness="2" CornerRadius="10" Margin="0,3" Padding="2,2">
+                                                <StackPanel>
+                                                    <Button Content="Speed" Margin="2,4,2,2" Style="{StaticResource YeeyUI_Button_NR}"/>
+                                                    <TextBlock Text="Let's you run very fast" Margin="2"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </GroupBox>
+                                <GroupBox Grid.Column="1" Style="{StaticResource YeeyUI_GroupBox_Module}"
+                                  Header="Test Module" Margin="5,10">
+                                    <ScrollViewer>
+                                        <StackPanel>
+
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </GroupBox>
+                                <GroupBox Grid.Column="2" Style="{StaticResource YeeyUI_GroupBox_Module}"
+                                  Header="Test Module" Margin="5,10">
+                                    <ScrollViewer>
+                                        <StackPanel>
+
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </GroupBox>
+                                <GroupBox Grid.Column="3" Style="{StaticResource YeeyUI_GroupBox_Module}"
+                                  Header="Test Module" Margin="5,10">
+                                    <ScrollViewer>
+                                        <StackPanel>
+
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </GroupBox>
+                                <GroupBox Grid.Column="4" Style="{StaticResource YeeyUI_GroupBox_Module}"
+                                  Header="Test Module" Margin="5,10">
+                                    <ScrollViewer>
+                                        <StackPanel>
+
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </GroupBox>
+                                <GroupBox Grid.Column="5" Style="{StaticResource YeeyUI_GroupBox_Module}"
+                                  Header="Test Module" Margin="5,10">
+                                    <ScrollViewer>
+                                        <StackPanel>
+                                            <Border Background="White" BorderBrush="#F0000000" BorderThickness="2" CornerRadius="10" Margin="0,3" Padding="2,2">
+                                                <StackPanel>
+                                                    <Button Content="Switch to Fluent ClickGUI" Margin="2"
+                                                            Click="Button_Click"
+                                                            Style="{StaticResource YeeyUI_Button_NR}"/>
+                                                    <Button Content="Change to Yeey Theme" Margin="2"
+                                                            Click="Button_Click_1"
+                                                            Style="{StaticResource YeeyUI_Button_NR}"/>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </ScrollViewer>
+                                </GroupBox>
+                            </Grid>
+                        </Grid>
+                    </Border>
+                </Viewbox>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
