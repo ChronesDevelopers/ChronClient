@@ -2,7 +2,7 @@
 
 ### Thank you to all Chron+ Users!
 
-Thank you so so much for donating it helped me a lot and I hope I can make better clients in the future! 
+Thank you so so much for donating it helped me (the creator) a lot and I hope I can make better clients in the future! 
 
 # ChronClient
 
